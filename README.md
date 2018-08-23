@@ -7,3 +7,15 @@ If you encounter any problems using this class please analyse the error message 
 If you cannot resolve a problem,  open a bug report in our bug-tracker under https://github.com/compositionality/issues.
 You can also contact us via email under executive-board@compositionality-journal.org, but it may take significantly longer to get a response.
 In any case we need the full source of a minimal working LaTeX file that reproduces the problem, as well as the log file showing the error to help you.
+
+
+List of changes to the compositionalityarticle class that we would like to implement:
+
+<ul>
+  <li>
+    Title of the article in all caps and same font as is used on the website of the journal.
+  </li>
+  <li>
+    Hyperlink to verify that an article is published in Compositionality in the footnote instead of the title.
+  </li>
+  </ul>
