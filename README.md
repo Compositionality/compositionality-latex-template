@@ -1,7 +1,7 @@
 # latex-template
 
 
-Here you can find the compositionalityarticle class, as well as an example article. 
+Here you can find the compositionalityarticle class, as well as an article template. 
 
 In case you encounter problems using this class please analyse the error message carefully and look for help online; http://tex.stackexchange.com/ is an excellent resource.
 If you cannot resolve a problem,  open a bug report in our bug-tracker under https://github.com/compositionality/issues.
