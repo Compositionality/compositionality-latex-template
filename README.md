@@ -20,3 +20,6 @@ List of changes to the compositionalityarticle class that we would like to imple
     Hyperlink to verify that an article is published in Compositionality in the footnote instead of the title.
   </li>
   </ul>
+
+## Thanks
+This class is heavily based on the quantumarticle class for the journal https://quantum-journal.org. We thank the editors of Quantum for sharing their experiences and expertise. 
