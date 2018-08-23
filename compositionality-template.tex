@@ -1,4 +1,4 @@
-\documentclass[a4paper,superscriptaddress,11pt,accepted=2018-07-22,issuemonth=July, issueyear=2018, shorttitle=template]{compositionalityarticle}
+\documentclass[a4paper,superscriptaddress,11pt,accepted=22-07-2018,issuemonth=July, issueyear=2018, shorttitle=template]{compositionalityarticle}
 \pdfoutput=1
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -39,7 +39,8 @@
 In the \texttt{twocolumn} layout and without the \texttt{titlepage} option there can be a paragraph directly following the abstract before the first section.
 In \texttt{onecolumn} format or with a dedicated \texttt{titlepage}, this should be avoided.
 Note that clicking the title links to the page for the published article on \href{http://compositionality-journal.org}{compositionality-journal.org}.
-In this way readers can easily verify whether a work using the compositionalityarticle class was actually published in Compositionality.
+In this way readers can easily verify whether a work using the {
+\tt compositionalityarticle} class was actually published in Compositionality.
 \end{abstract}
 
 
@@ -128,7 +129,7 @@ in the preamble of your document and then use the \texttt{plainnat} citation sty
 \bibliographystyle{plainnat}
 \bibliography{mybibliography}
 \end{verbatim}
-The compositionalityarticle class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\textbackslash{}doi} command to create hyperlinks.
+The { \tt compositionalityarticle} class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\textbackslash{}doi} command to create hyperlinks.
 This is likely the easiest option if you are converting from another document class.
 
 If you want to used BibLaTeX, you can instead add
@@ -144,7 +145,7 @@ where appropriate.
 You then have to upload the .bbl file along with the other source files when submitting to the arXiv.
 Due to incompatibilities between different LaTeX versions we unfortunately cannot recommend this option until the arXiv has updated its LaTeX system \cite{biblatexsubmittingtothearxiv}.
 
-The compositionalityarticle class automatically detects that the \texttt{biblatex} package was loaded, sets the default option \texttt{doi=true} to include the DOI in the bibliography, and declares a suitable field format to make it a hyperlink.
+The { \tt compositionalityarticle} class automatically detects that the \texttt{biblatex} package was loaded, sets the default option \texttt{doi=true} to include the DOI in the bibliography, and declares a suitable field format to make it a hyperlink.
 Due to issues with \texttt{biber} we recommend to use the \texttt{bibtex} backend of \texttt{biblatex}.
 
 More information on how to get DOI links in your document can be found on StackExchange \cite{howtogetdoilinksinbibliography,automaticallyaddingdoifieldstoahandmadebibliography}.
@@ -160,7 +161,7 @@ within the first five lines of your main LaTeX file as suggested by the arXiv \c
 \section{Unpublished and accepted works}
 This class supports the \texttt{unpublished} option which disables all Compositionality related branding such as the color as well as the hyperlink in the title.
 It can be used for works not yet accepted in Compositionality or  that are not intended for submission to Compositionality.
-By giving the \texttt{accepted=YYYY-MM-DD} option, with \texttt{YYYY-MM-DD} the acceptance date, the footnote ``Accepted in Compositionality on YYYY-MM-DD. Click on title to verify.'' is  added to the bottom of each page to clearly mark works that have been accepted in Compositionality. Once the work is accepted for publication you will receive an identifier {\tt article-id} which you will have to give as the {\tt shortitle=article-id} option (this is needed for the title hyperlink). Finally, for accepted works you also have to  give the  \texttt{issuemonth=month}, as well as \texttt{issueyear=year} options, where {\tt month} and { \tt year} are the month and year in which the work was accepted. 
+By giving the \texttt{accepted=DD-MM-YYYY} option, with \texttt{DD-MM-YYYY} the acceptance date, the footnote ``Accepted in Compositionality on DD-MM-YYYY. Click on title to verify.'' is  added to the bottom of each page to clearly mark works that have been accepted in Compositionality. Once the work is accepted for publication you will receive an identifier {\tt article-id} which you will have to give as the {\tt shortitle=article-id} option (this is needed for the title hyperlink). Finally, for accepted works you also have to  give the  \texttt{issuemonth=month}, as well as \texttt{issueyear=year} options, where {\tt month} and { \tt year} are the month and year in which the work was accepted. 
 
 \section{Summary section}
 Longer articles should include a section that, early on, explains the main results, their limitations, and assumptions.
@@ -257,7 +258,7 @@ You are free to change this in case it is more appropriate for your article, but
 If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\textbackslash{}onecolumn\textbackslash{}newpage} before \texttt{\textbackslash{}appendix}.   
 
 \section{Problems and Bugs}
-In case you encounter problems using the Compositionalityarticle class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
+Should you encounter any problems using the {\tt compositionalityarticle} class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
 If you cannot resolve a problem,  open a bug report in our bug-tracker under \href{https://github.com/compositionality/issues}{https://github.com/compositionality/issues}.
 You can also contact us via email under \href{executive-board@compositionality-journal.org}{executive-board@compositionality-journal.org}, but it may take significantly longer to get a response.
 In any case we need the full source of a document that produces the problem and the log file showing the error to help you.
