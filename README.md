@@ -1,4 +1,4 @@
-# Latex template
+# Article class
 
 
 Here you can find the compositionalityarticle class, as well as an article template. 
