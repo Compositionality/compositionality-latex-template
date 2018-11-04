@@ -24,6 +24,8 @@
 \RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{raleway}
+\RequirePackage[light]{merriweather}
 \newcommand\@ptsize{}
 \newif\if@restonecol
 \newif\if@titlepage
@@ -459,23 +461,32 @@
 \newcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
-                                   {\normalfont\Large\sffamily}}
+                                   {\large\fontfamily{Raleway-TLF}\bfseries}}
 \newcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
-                                     {\normalfont\large\sffamily}}
+                                     {\sffamily\fontfamily{Raleway-TLF}}}
 \newcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
-                                     {\normalfont\normalsize\sffamily}}
+                                     {\sffamily\fontfamily{Raleway-TLF}}}
 \newcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                                     {3.25ex \@plus1ex \@minus.2ex}%
                                     {-1em}%
-                                    {\normalfont\normalsize\bfseries}}
+                                    {\sffamily\fontfamily{Raleway-TLF}}}
 \newcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
                                        {3.25ex \@plus1ex \@minus .2ex}%
                                        {-1em}%
-                                      {\normalfont\normalsize\bfseries}}
+                                      {\sffamily\fontfamily{Raleway-TLF}}}
+
+
+\renewcommand \normalsize { 
+%   \merriweatherlight
+   \color{darkgray} 
+   \selectfont 
+}
+\linespread{1.4}
+
 \if@twocolumn
   \setlength\leftmargini  {2em}
 \else
