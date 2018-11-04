@@ -530,6 +530,8 @@
                {\endlist}
 \newcommand*\descriptionlabel[1]{\hspace\labelsep
                                 \normalfont\bfseries #1}
+
+\newcommand \abstractfont{\color{darkgray}\merriweatherlight\bfseries\selectfont}
 \if@titlepage
   \newenvironment{abstract}{%
     \ifx\maketitle\relax{}\else\maketitle\fi
@@ -538,7 +540,7 @@
       \thispagestyle{empty}%
       \@beginparpenalty\@lowpenalty
       \begin{center}%
-        \bfseries \abstractname
+        \abstractfont \abstractname
         \@endparpenalty\@M
       \end{center}}%
      {\par\vfil\null\newpage\endtitlepage}
