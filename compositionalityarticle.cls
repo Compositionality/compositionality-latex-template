@@ -927,8 +927,8 @@ class for Compositionality - the open journal for the mathematics of composition
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 {\fancyfoot[C]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 \iftoggle{@accepted}
-	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}}
-	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{} \ifcsdef{@issue}{Issue \@issue }{} ISSN 2631-4444}}}
+	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}
+	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{} \ifcsdef{@issue}{Issue \@issue }{} ISSN 2631-4444}}}}
 %
 
 % validate the date format to be YYYY-MM-DD
@@ -1317,7 +1317,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \PassOptionsToPackage{colorlinks=true,hyperindex}{hyperref}
 
 \iftoggle{@unpublished}
-	{}
+	{\PassOptionsToPackage{allcolors=gray}{hyperref}}
 	{\PassOptionsToPackage{allcolors=compositionalitydarkpink}{hyperref}}
 
 \ifcsdef{pdfoutput}
