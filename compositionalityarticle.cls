@@ -926,7 +926,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \iftoggle{@accepted}
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 {\fancyfoot[C]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
-%\iftoggle{@accepted}
+\iftoggle{@accepted}
 	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}}
 	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{} \ifcsdef{@issue}{Issue \@issue }{} ISSN 2631-4444}}}
 %
