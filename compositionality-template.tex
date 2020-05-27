@@ -216,6 +216,33 @@ Alternatively you can use a format similar to that of the \texttt{authblk} packa
 \affil[3]{Affiliation 1}
 \end{verbatim}
 
+
+
+
+
+
+\appendix
+
+\section{First section of the appendix}
+Compositionality allows the usage of appendices.
+
+\subsection{Subsection}
+Ideally, the command \texttt{\textbackslash{}appendix} should be put before the appendices to get appropriate section numbering.
+The appendices are then numbered alphabetically, with numeric (sub)subsection numbering.
+Equations continue to be numbered sequentially.
+\begin{equation}
+  A \neq B
+\end{equation}
+You are free to change this in case it is more appropriate for your article, but a consistent and unambiguous numbering of sections and equations must be ensured.
+
+If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\textbackslash{}onecolumn\textbackslash{}newpage} before \texttt{\textbackslash{}appendix}.   
+
+\section{Problems and Bugs}
+In case you encounter problems using the {\tt compositionalityarticle class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
+If you cannot resolve a problem,  open a bug report in our bug-tracker under \href{https://github.com/compositionality/issues}{https://github.com/compositionality/latex-template/issues}.
+You can also contact us via email under \href{executive-board@compositionality-journal.org}{executive@compositionality-journal.org}, but it may take significantly longer to get a response.
+In any case we need the full source of a document that produces the problem and the log file showing the error to help you.
+
 \bibliographystyle{plain}
 \begin{thebibliography}{9}
 \bibitem{examplecitation}
@@ -240,26 +267,6 @@ Alternatively you can use a format similar to that of the \texttt{authblk} packa
 
 
 \onecolumn\newpage
-\appendix
 
-\section{First section of the appendix}
-Compositionality allows the usage of appendices.
-
-\subsection{Subsection}
-Ideally, the command \texttt{\textbackslash{}appendix} should be put before the appendices to get appropriate section numbering.
-The appendices are then numbered alphabetically, with numeric (sub)subsection numbering.
-Equations continue to be numbered sequentially.
-\begin{equation}
-  A \neq B
-\end{equation}
-You are free to change this in case it is more appropriate for your article, but a consistent and unambiguous numbering of sections and equations must be ensured.
-
-If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\textbackslash{}onecolumn\textbackslash{}newpage} before \texttt{\textbackslash{}appendix}.   
-
-\section{Problems and Bugs}
-In case you encounter problems using the {\tt compositionalityarticle class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
-If you cannot resolve a problem,  open a bug report in our bug-tracker under \href{https://github.com/compositionality/issues}{https://github.com/compositionality/latex-template/issues}.
-You can also contact us via email under \href{executive-board@compositionality-journal.org}{executive@compositionality-journal.org}, but it may take significantly longer to get a response.
-In any case we need the full source of a document that produces the problem and the log file showing the error to help you.
 
 \end{document}
