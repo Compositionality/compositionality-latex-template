@@ -1206,6 +1206,17 @@ class for Compositionality - the open journal for the mathematics of composition
 		\forlistcsloop{\@@spaceafter}{author#1homepages}%
 	}
 	{}%
+%
+	\ifcsdef{author#1orcid}
+	{%
+		\ifcsdef{author#1emails}
+		{\unskip, }
+		{}%
+                \lower0.4ex\hbox{\includegraphics[height=2ex]{ORCIDiD_iconvector.pdf}}\enspace%
+		\csuse{author#1orcid}%
+	}
+	{}%
+%
 	\ifcsdef{author#1thanks}
 	{%
 		\ifcsdef{author#1emails}
@@ -1251,8 +1262,10 @@ class for Compositionality - the open journal for the mathematics of composition
 	\csdef{author\@currentauthornumber hasextras}{}
 }
 \def\@orcid#1#2{%
+\message{Orcid: (#1)(#2)}%
 	\ifcsdef{@currentauthornumber}{}{\def\@currentauthornumber{0}}%in case \orcid is called before the first author
 	\@addorcid{#1#2}{\@currentauthornumber}
+	\csdef{author\@currentauthornumber hasextras}{}
 }
 \def\@addemail#1#2{
 	\ifcsdef{author#2emails}{}{\csdef{author#2emails}{}}%
