@@ -1191,46 +1191,37 @@ class for Compositionality - the open journal for the mathematics of composition
 
 % email, homepage, and thanks handling
 % be careful - this section is highly sensitive to the positioning of the % marks
+\newbool{authorextrainfo@first}
 \def\@printauthorextrainfo#1{
+	\booltrue{authorextrainfo@first}%
 	\csname @authorname#1\endcsname: 
 	\ifcsdef{author#1emails}
 	{%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
 		\forlistcsloop{\@@spaceafter}{author#1emails}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
 	\ifcsdef{author#1homepages}
 	{%
-		\ifcsdef{author#1emails}
-		{\unskip, }
-		{}%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
 		\forlistcsloop{\@@spaceafter}{author#1homepages}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
-%
 	\ifcsdef{author#1orcid}
 	{%
-		\ifcsdef{author#1emails}
-		{\unskip, }
-		{}%
-                \lower0.4ex\hbox{\includegraphics[height=2ex]{ORCIDiD_iconvector.pdf}}\enspace%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
+                \lower0.3ex\hbox{\includegraphics[height=2ex]{ORCIDiD_iconvector.pdf}}\thinspace%
 		\csuse{author#1orcid}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
-%
 	\ifcsdef{author#1thanks}
 	{%
-		\ifcsdef{author#1emails}
-		{%
-			\ifcsdef{author#1homepages}
-			{\unskip, }
-			{\unskip, }%
-		}
-		{%
-			\ifcsdef{author#1homepages}
-			{\unskip, }
-			{}%
-		}%
+		\ifbool{authorextrainfo@first}{}{\unskip.\space}%
 		\forlistcsloop{\@@spaceafter}{author#1thanks}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
 }
