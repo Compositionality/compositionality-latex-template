@@ -1253,7 +1253,6 @@ class for Compositionality - the open journal for the mathematics of composition
 	\csdef{author\@currentauthornumber hasextras}{}
 }
 \def\@orcid#1#2{%
-\message{Orcid: (#1)(#2)}%
 	\ifcsdef{@currentauthornumber}{}{\def\@currentauthornumber{0}}%in case \orcid is called before the first author
 	\@addorcid{#1#2}{\@currentauthornumber}
 	\csdef{author\@currentauthornumber hasextras}{}
