@@ -19,7 +19,7 @@
 \email{latex@compositionality-journal.org}
 \homepage{http://compositionality-journal.org}
 \orcid{0000-0003-0290-4698}
-\thanks{You can use the \texttt{\textbackslash{}email}, \texttt{\textbackslash{}homepage}, and \texttt{\textbackslash{}thanks} commands to add additional information for the preceding \texttt{\textbackslash{}author}. If applicable, this can also be used to indicate that a work has previously been published in conference proceedings.}
+\thanks{You can use the \texttt{\string\email}, \texttt{\string\homepage}, and \texttt{\string\thanks} commands to add additional information for the preceding \texttt{\string\author}. If applicable, this can also be used to indicate that a work has previously been published in conference proceedings.}
 \affiliation{MIT, Mathematics Department, Boston, USA}
 \author{Nina Otter}
 \affiliation{UCLA, Mathematics Department, Los Angeles, USA}
@@ -34,8 +34,8 @@
   Compositionality also supports a \texttt{twocolumn} layout with the abstract as a boldface first paragraph.
   Both can be combined with the \texttt{titlepage} option to obtain a format with dedicated title and abstract pages that are not included in the page count.
   This format can be more suitable for long articles.
-  The \texttt{abstract} environment can appear both before and after the \texttt{\textbackslash{}maketitle} command and calling \texttt{\textbackslash{}maketitle} is optional, as long as there is an \texttt{abstract}.
-  Both \texttt{abstract} and \texttt{\textbackslash{}maketitle} however must be placed after all other \texttt{\textbackslash{}author}, \texttt{\textbackslash{}affiliation}, etc.\ commands.
+  The \texttt{abstract} environment can appear both before and after the \texttt{\string\maketitle} command and calling \texttt{\string\maketitle} is optional, as long as there is an \texttt{abstract}.
+  Both \texttt{abstract} and \texttt{\string\maketitle} however must be placed after all other \texttt{\string\author}, \texttt{\string\affiliation}, etc.\ commands.
 In the \texttt{twocolumn} layout and without the \texttt{titlepage} option there can be a paragraph directly following the abstract before the first section.
 In \texttt{onecolumn} format or with a dedicated \texttt{titlepage}, this should be avoided.
 Note that clicking the title links to the page for the published article on \href{http://compositionality-journal.org}{compositionality-journal.org}.
@@ -69,7 +69,7 @@ For multi-line equations \texttt{align} is \href{http://tex.stackexchange.com/qu
   H\,|\psi\rangle &= E\,|\psi\rangle\\
   (\openone \otimes A)\,(B \otimes \openone) &= A \otimes B
 \end{align}
-Whether you prefer to refer to equations as Eq.~\eqref{emc}, Equation~\ref{emc}, or just \eqref{emc} is up to you, but please be consistent and use the \texttt{\textbackslash{}eqref\{\dots\}} command instead of writing \texttt{(\textbackslash{}ref\{\dots\})}.
+Whether you prefer to refer to equations as Eq.~\eqref{emc}, Equation~\ref{emc}, or just \eqref{emc} is up to you, but please be consistent and use the \texttt{\string\eqref\{\dots\}} command instead of writing \texttt{(\string\ref\{\dots\})}.
 As a courtesy for your readers and referees please suppress equation numbers only if there is a valid reason to do so to not make in unnecessarily difficult to refer to individual results and steps in derivations. 
 
 \paragraph{Paragraphs}
@@ -98,7 +98,7 @@ If you are formating your bibliography manually, you can cite this work using th
 \end{verbatim}
 
 \begin{theorem}[One citation per bibitem]
-  Important: If you are formatting your bibliography manually, please do not group multiple citations into one \texttt{\textbackslash{}bibitem}.
+  Important: If you are formatting your bibliography manually, please do not group multiple citations into one \texttt{\string\bibitem}.
   It is not nice for your readers and it screws up our automatic extraction of citations and creates superfluous manual work.
 \end{theorem}
 
@@ -128,7 +128,7 @@ in the preamble of your document and then use the \texttt{plainnat} citation sty
 \bibliographystyle{plainnat}
 \bibliography{mybibliography}
 \end{verbatim}
-The \texttt{compositionalityarticle} class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\textbackslash{}doi} command to create hyperlinks.
+The \texttt{compositionalityarticle} class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\string\doi} command to create hyperlinks.
 This is likely the easiest option if you are converting from another document class.
 
 If you want to used BibLaTeX, you can instead add
@@ -227,7 +227,7 @@ Alternatively you can use a format similar to that of the \texttt{authblk} packa
 Compositionality allows the usage of appendices.
 
 \subsection{Subsection}
-Ideally, the command \texttt{\textbackslash{}appendix} should be put before the appendices to get appropriate section numbering.
+Ideally, the command \texttt{\string\appendix} should be put before the appendices to get appropriate section numbering.
 The appendices are then numbered alphabetically, with numeric (sub)subsection numbering.
 Equations continue to be numbered sequentially.
 \begin{equation}
@@ -235,7 +235,7 @@ Equations continue to be numbered sequentially.
 \end{equation}
 You are free to change this in case it is more appropriate for your article, but a consistent and unambiguous numbering of sections and equations must be ensured.
 
-If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\textbackslash{}onecolumn\textbackslash{}newpage} before \texttt{\textbackslash{}appendix}.   
+If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\string\onecolumn\string\newpage} before \texttt{\string\appendix}.   
 
 \section{Problems and Bugs}
 In case you encounter problems using the \texttt{compositionalityarticle} class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
