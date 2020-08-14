@@ -632,12 +632,12 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\par\vfil\null\newpage\endtitlepage}
 }{
 	\newenvironment{abstract}{%
-		\ifdefempty{\maketitle}{\relax{}}{\maketitle}
-		\ifbool{@twocolumn}{\bf}{\vskip 1em \quotation}%
-	}
+		\ifdefempty{\maketitle}{\relax{}}{\maketitle}%
+		\ifbool{@twocolumn}{\bf}{\vskip 1em \quotation}\noindent\ignorespaces
+	}%
 	{
 		\ifbool{@twocolumn}{}{\endquotation\vskip 2em}
-	}
+	}%
 }
 
 \newenvironment{verse}
