@@ -311,7 +311,10 @@ class for Compositionality - the open journal for the mathematics of composition
 	{}
 }
 
-\AtBeginDocument{
+
+% this was only loaded at begin document, 
+% but it needs to come before some user-invoked symbol fonts, eg MnSymbol.sty
+% so now loading immediately (JG, 2020-08-14)
 	% avoid bitmap fonts by loading lmodern or at least checking for cm-super
 	\IfFileExists{lmodern.sty}{
 		\RequirePackage{lmodern}
@@ -322,6 +325,7 @@ class for Compositionality - the open journal for the mathematics of composition
             }
           }
 	}
+\AtBeginDocument{
 	% Define a revtex-style openone symbol
 	\IfFileExists{bbm.sty}{
 		\RequirePackage{bbm}
