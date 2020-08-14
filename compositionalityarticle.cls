@@ -1320,8 +1320,8 @@ class for Compositionality - the open journal for the mathematics of composition
 	\providecommand{\tnoteref}[1]{\@elsearticlecommandsnotsupportederror} %title footnote reference
 }
 
-% set default options for hyperref to make links more pretty
-\PassOptionsToPackage{colorlinks=true,hyperindex}{hyperref}
+% set default options for hyperref to make links more pretty, and add backwards pagerefs to bibliography
+\PassOptionsToPackage{colorlinks=true,hyperindex,backref=page}{hyperref}
 
 \iftoggle{@unpublished}
 	{\PassOptionsToPackage{allcolors=gray}{hyperref}}
