@@ -5,7 +5,7 @@
 %%
 %% Copyright 2018, 2019, 2020
 %% https://compositionality-journal.org
-%% 
+%%
 %% It is derived from `article.cls' available from
 %% https://www.ctan.org/pkg/article
 %%
@@ -16,7 +16,7 @@
 %%    http://www.latex-project.org/lppl.txt
 %% and version 1.3c or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
-%% 
+%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \def\compositionalityarticleversion{2.0}
 \ProvidesClass{compositionalityarticle}
@@ -91,7 +91,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \DeclareOptionX{titlepage}{\toggletrue{@titlepage}}
 \DeclareOptionX{notitlepage}{\togglefalse{@titlepage}}
 
-\DeclareOptionX{onecolumn}{\boolfalse{@twocolumn}}	
+\DeclareOptionX{onecolumn}{\boolfalse{@twocolumn}}
 \DeclareOptionX{twocolumn}{\booltrue{@twocolumn}}
 
 \DeclareOptionX{leqno}{\input{leqno.clo}}
@@ -235,7 +235,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \ExecuteOptionsX{10pt,oneside,twocolumn,notitlepage,final}
 \ProcessOptionsX
 % Throw an error if no paper size was manually specified
-% Simply defaulting to a4paper gives inconsistent behaviour when submitting to the arXiv as the arXiv seems to sometimes set a4paper and sometimes letterpaper, maybe depending on the geographic region of the submitter? 
+% Simply defaulting to a4paper gives inconsistent behaviour when submitting to the arXiv as the arXiv seems to sometimes set a4paper and sometimes letterpaper, maybe depending on the geographic region of the submitter?
 \iftoggle{@papersizespecified}
 {
 }
@@ -273,7 +273,7 @@ class for Compositionality - the open journal for the mathematics of composition
     {%
       \@pdfoutputerror%
     }
-  } 
+  }
   \ifinlist{#2}{\@packageblacklist}{
     \ifcsdef{@packageblacklisterrormessage#2}{
       \ClassError{compositionalityarticle}{\csname @packageblacklisterrormessage#2\endcsname}{}}{}
@@ -296,7 +296,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \@highpenalty 301
 
 \AfterEndPreamble{
-	% avoid use of today	
+	% avoid use of today
 	\ifcsdef{today}
 	{
 		\iftoggle{@allowtoday}
@@ -357,7 +357,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \let\col@number\@colnum
 
 \ltx@ifpackageloaded{ltxgrid}{
-	%repair what ltxutils has destroyed (see https://tex.stackexchange.com/questions/343856/biblatex-produces-incomplete-bcf-with-biber-backend) 
+	%repair what ltxutils has destroyed (see https://tex.stackexchange.com/questions/343856/biblatex-produces-incomplete-bcf-with-biber-backend)
 	\patchcmd\enddocument
 	{\deadcycles}
 	{\let\AfterEndDocument\@firstofone
@@ -681,7 +681,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	\setcounter{subsection}{0}%
 	\gdef\thesection{\@Alph\c@section}
 	\section*{\appendixname}%
-	#1%	
+	#1%
 }
 \setlength\arraycolsep{5\p@}
 \setlength\tabcolsep{6\p@}
@@ -766,7 +766,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	\@starttoc{toc}%
 }
 
-\newcommand*\l@part[2]{%	
+\newcommand*\l@part[2]{%
 	\ifnumgreater{\c@tocdepth}{-2}{\relax
 		\addpenalty\@secpenalty
 		\addvspace{2.25em \@plus\p@}%
@@ -927,7 +927,7 @@ class for Compositionality - the open journal for the mathematics of composition
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 {\fancyfoot[C]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 \iftoggle{@accepted}
-	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}
+	{\fancyfoot[L]{\ifnum\thepage=1 \usebox{\@compositionalityacceptedbox}\else\fi}%\usebox{\@compositionalityacceptedbox}}
 	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{} \ifcsdef{@issue}{Issue \@issue }{} ISSN 2631-4444}}}}
 %
 
@@ -966,8 +966,8 @@ class for Compositionality - the open journal for the mathematics of composition
 \pagenumbering{arabic}
 \ifbool{@twoside}{}{\raggedbottom}
 \ifbool{@twocolumn}{
-	\twocolumn 
-	\sloppy 
+	\twocolumn
+	\sloppy
 	\flushbottom
 }{
 	\onecolumn
@@ -1192,7 +1192,7 @@ class for Compositionality - the open journal for the mathematics of composition
 % email, homepage, and thanks handling
 % be careful - this section is highly sensitive to the positioning of the % marks
 \def\@printauthorextrainfo#1{
-	\csname @authorname#1\endcsname: 
+	\csname @authorname#1\endcsname:
 	\ifcsdef{author#1emails}
 	{%
 		\forlistcsloop{\@@spaceafter}{author#1emails}%
@@ -1282,10 +1282,13 @@ class for Compositionality - the open journal for the mathematics of composition
 	\iftoggle{@accepted}
 		{%
 			\newsavebox\@compositionalityacceptedbox
-			
+
 
 			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
-			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.}}}}
+			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{
+				Published in Compositionality. Available from DOI
+				%Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.
+				}}}}
 
 
 
@@ -1321,7 +1324,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\PassOptionsToPackage{allcolors=compositionalitydarkpink}{hyperref}}
 
 \ifcsdef{pdfoutput}
-{	
+{
 	\ifnumequal{\pdfoutput}{0}
 	{}
 	{\PassOptionsToPackage{breaklinks=true}{hyperref}}%setting this option produces a warning if \pdfoutput=0
@@ -1333,7 +1336,7 @@ class for Compositionality - the open journal for the mathematics of composition
 
 \AtBeginDocument{%
 
-	\RequirePackage{hyperref}%	
+	\RequirePackage{hyperref}%
 
 	\@ifpackageloaded{natbib}{%
 		\setlength{\bibsep}{0pt plus 0.3ex}
@@ -1369,7 +1372,7 @@ class for Compositionality - the open journal for the mathematics of composition
 {
 	\PassOptionsToPackage{numbers}{natbib}
 	\PassOptionsToPackage{sort&compress}{natbib}
-	
+
 	\providecommand{\ao}{Appl.\  Opt.}
 	\providecommand{\ap}{Appl.\  Phys.}
 	\providecommand{\apl}{Appl.\ Phys.\ Lett.}
