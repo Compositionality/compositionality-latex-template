@@ -1286,7 +1286,7 @@ class for Compositionality - the open journal for the mathematics of composition
 
 			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
 			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{
-				Published in Compositionality. Available from DOI
+				Published in Compositionality. Available from DOI: 10.32408/compositionality-\@volume-\@issue. Click on the title to verify.
 				%Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.
 				}}}}
 
