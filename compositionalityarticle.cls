@@ -927,7 +927,7 @@ class for Compositionality - the open journal for the mathematics of composition
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 {\fancyfoot[C]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 \iftoggle{@accepted}
-	{\fancyfoot[L]{\ifnum\thepage=1 \usebox{\@compositionalityacceptedbox}\else\logo\fi}%\usebox{\@compositionalityacceptedbox}}
+	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}
 	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{} \ifcsdef{@issue}{Issue \@issue }{} ISSN 2631-4444}}}}
 %
 
@@ -1285,9 +1285,7 @@ class for Compositionality - the open journal for the mathematics of composition
 
 
 			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
-			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{
-				Published in Compositionality. Available from DOI: 10.32408/compositionality-\@volume-\@issue.
-				}}}}
+			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.}}}}
 
 
 
