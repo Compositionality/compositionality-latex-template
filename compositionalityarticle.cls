@@ -311,7 +311,10 @@ class for Compositionality - the open journal for the mathematics of composition
 	{}
 }
 
-\AtBeginDocument{
+
+% this was only loaded at begin document, 
+% but it needs to come before some user-invoked symbol fonts, eg MnSymbol.sty
+% so now loading immediately (JG, 2020-08-14)
 	% avoid bitmap fonts by loading lmodern or at least checking for cm-super
 	\IfFileExists{lmodern.sty}{
 		\RequirePackage{lmodern}
@@ -322,6 +325,7 @@ class for Compositionality - the open journal for the mathematics of composition
             }
           }
 	}
+\AtBeginDocument{
 	% Define a revtex-style openone symbol
 	\IfFileExists{bbm.sty}{
 		\RequirePackage{bbm}
@@ -628,12 +632,12 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\par\vfil\null\newpage\endtitlepage}
 }{
 	\newenvironment{abstract}{%
-		\ifdefempty{\maketitle}{\relax{}}{\maketitle}
-		\ifbool{@twocolumn}{\bf}{\vskip 1em \quotation}%
-	}
+		\ifdefempty{\maketitle}{\relax{}}{\maketitle}%
+		\ifbool{@twocolumn}{\bf}{\vskip 1em \quotation}\noindent\ignorespaces
+	}%
 	{
 		\ifbool{@twocolumn}{}{\endquotation\vskip 2em}
-	}
+	}%
 }
 
 \newenvironment{verse}
@@ -1191,35 +1195,37 @@ class for Compositionality - the open journal for the mathematics of composition
 
 % email, homepage, and thanks handling
 % be careful - this section is highly sensitive to the positioning of the % marks
+\newbool{authorextrainfo@first}
 \def\@printauthorextrainfo#1{
-	\csname @authorname#1\endcsname:
+	\booltrue{authorextrainfo@first}%
+	\csname @authorname#1\endcsname: 
 	\ifcsdef{author#1emails}
 	{%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
 		\forlistcsloop{\@@spaceafter}{author#1emails}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
 	\ifcsdef{author#1homepages}
 	{%
-		\ifcsdef{author#1emails}
-		{\unskip, }
-		{}%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
 		\forlistcsloop{\@@spaceafter}{author#1homepages}%
+		\boolfalse{authorextrainfo@first}%
+	}
+	{}%
+	\ifcsdef{author#1orcid}
+	{%
+		\ifbool{authorextrainfo@first}{}{\unskip,\space}%
+                \lower0.3ex\hbox{\includegraphics[height=2ex]{ORCIDiD_iconvector.pdf}}\thinspace%
+		\csuse{author#1orcid}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
 	\ifcsdef{author#1thanks}
 	{%
-		\ifcsdef{author#1emails}
-		{%
-			\ifcsdef{author#1homepages}
-			{\unskip, }
-			{\unskip, }%
-		}
-		{%
-			\ifcsdef{author#1homepages}
-			{\unskip, }
-			{}%
-		}%
+		\ifbool{authorextrainfo@first}{}{\unskip.\space}%
 		\forlistcsloop{\@@spaceafter}{author#1thanks}%
+		\boolfalse{authorextrainfo@first}%
 	}
 	{}%
 }
@@ -1253,6 +1259,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \def\@orcid#1#2{%
 	\ifcsdef{@currentauthornumber}{}{\def\@currentauthornumber{0}}%in case \orcid is called before the first author
 	\@addorcid{#1#2}{\@currentauthornumber}
+	\csdef{author\@currentauthornumber hasextras}{}
 }
 \def\@addemail#1#2{
 	\ifcsdef{author#2emails}{}{\csdef{author#2emails}{}}%
@@ -1313,8 +1320,8 @@ class for Compositionality - the open journal for the mathematics of composition
 	\providecommand{\tnoteref}[1]{\@elsearticlecommandsnotsupportederror} %title footnote reference
 }
 
-% set default options for hyperref to make links more pretty
-\PassOptionsToPackage{colorlinks=true,hyperindex}{hyperref}
+% set default options for hyperref to make links more pretty, and add backwards pagerefs to bibliography
+\PassOptionsToPackage{colorlinks=true,hyperindex,backref=page}{hyperref}
 
 \iftoggle{@unpublished}
 	{\PassOptionsToPackage{allcolors=gray}{hyperref}}
