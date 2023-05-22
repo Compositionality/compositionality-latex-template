@@ -1,6 +1,6 @@
 # Article class
 
-The Compositionality article class is a community effort maintained by the Executive board of Compositionality.
+The Compositionality article class is a community effort maintained by the Executive Board and the Editors of Compositionality.
 
 This repository provides the `compositionalityarticle` class and a template for typesetting articles in Compositionality - the open journal for the mathematics of composition.
 The class is derived from `article.cls' available from [CTAN](https://www.ctan.org/pkg/article). The class may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3c of this license or (at your option) any later version.
