@@ -1,4 +1,4 @@
-# Article class
+# Compositionality article class
 
 The Compositionality article class is a community effort. It is maintained by the Executive Board with the help of the Editors of Compositionality - the open journal for the mathematics of composition.
 
