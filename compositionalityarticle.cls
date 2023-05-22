@@ -1346,7 +1346,7 @@ class for Compositionality - the open journal for the mathematics of composition
 		\setlength{\bibsep}{0pt plus 0.3ex}
 		\@ifpackageloaded{doi}{}{%
 			\providecommand{\doi}[1]{}
-			\renewcommand{\doi}[1]{\href{https://doi.org/\detokenize{#1}}{DOI: \detokenize{#1}}}%
+			\renewcommand{\doi}[1]{\href{https://doi.org/\detokenize{#1}}{https://doi.org/\detokenize{#1}}}%
 		}%
 	}{%
 		\@ifpackageloaded{biblatex}{
