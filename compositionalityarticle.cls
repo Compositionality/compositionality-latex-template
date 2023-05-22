@@ -1,5 +1,5 @@
 %%
-%% This is file `compositionality.cls',
+%% This is file `compositionalityarticle.cls',
 %% it provides the compositionalityarticle class for typesetting articles in
 %% Compositionality - the open journal for the mathematics of composition
 %%
