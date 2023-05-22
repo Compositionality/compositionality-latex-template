@@ -6,8 +6,8 @@ This repository provides the `compositionalityarticle` class and a template for 
 The class is derived from `article.cls' available from [CTAN](https://www.ctan.org/pkg/article). The class may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3c of this license or (at your option) any later version.
 
 ## Bugs and issues
-Please open a bug report in our bug-tracker under https://github.com/compositionality/latex-template/issues. 
-Please help us reproduce any problem by providing the full source of a minimal working LaTeX file, as well as the log file showing the error. 
+Please help us by opening a bug report in our bug-tracker under https://github.com/compositionality/latex-template/issues. 
+Please reproduce any problem by providing the full source of a minimal working LaTeX file, as well as the log file showing the error. 
 
 ## Future changes
 List of changes to the compositionalityarticle class that we would like to implement:
