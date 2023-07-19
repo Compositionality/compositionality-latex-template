@@ -18,7 +18,7 @@
 %% version 2005/12/01 or later.
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\def\compositionalityarticleversion{2.0}
+\def\compositionalityarticleversion{2.1}
 \ProvidesClass{compositionalityarticle}
 [2020/05/01 v\compositionalityarticleversion
 class for Compositionality - the open journal for the mathematics of composition (https://compositionality-journal.org)]
