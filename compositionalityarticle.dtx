@@ -1,0 +1,155 @@
+% \iffalse meta-comment
+%% =============================================================================
+%%
+%% compositionality <VERSION> (<DATE>)
+%%
+%% =============================================================================
+%
+% %%%=[ DRIVER ]================================================================
+%
+%<*driver>
+\documentclass[a4paper,full]{l3doc}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+  \DocInput{\jobname.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+%
+% \fi
+%
+% \changes{0.1.0}{2023/05/31}{Initial version}
+%
+% \GetFileInfo{\jobname.cls}
+%
+% \title{^^A
+%   The \cls{\jobname} document class^^A
+%   \thanks{Thanks!}\\^^A
+%   \fileinfo^^A
+% }
+%
+% \author{^^A
+%   J Doe\\^^A
+%   \texttt{\href{mailto:j.doe@email.com}{j.doe@email.com}}^^A
+% }
+%
+% \date{\fileversion~(\filedate)}
+%
+% \maketitle
+%
+% ^^A=[ DOCUMENTATION ]=========================================================
+%
+% \begin{documentation}
+%
+% \section{Documentation}
+%
+% \end{documentation}
+%
+% ^^A=[ PACKAGE ]===============================================================
+%
+% \begin{implementation}
+%
+% \section{Implementation}
+%
+% Open the \pkg{DocStrip} guards.
+%    \begin{macrocode}
+%<*package>
+%    \end{macrocode}
+%
+% Identify the internal prefix (\LaTeX3 \pkg{DocStrip} convention).
+%    \begin{macrocode}
+%<@@=shrimp>
+%    \end{macrocode}
+%
+% Load the essential support (\pkg{expl3}) \enquote{up-front}.
+%
+%    \begin{macrocode}
+\RequirePackage{expl3}[2023/05/11]
+\RequirePackage{l3keys2e}
+\RequirePackage{xparse}
+%    \end{macrocode}
+%
+% Identify the package and give the over all version information.
+%    \begin{macrocode}
+\ProvidesExplClass
+{compositionality}
+{<DATE>}
+{<VERSION>}
+{The Compositionality article class}
+
+\ExplSyntaxOn
+
+\keys_define:nn { shrimp }
+{
+    accepted .tl_set:N  = \l_shrimp_accepted_tl,
+    volume   .tl_set:N  = \l_shrimp_volume_tl,
+    issue    .tl_set:N  = \l_shrimp_issue_tl,
+    doi      .tl_set:N  = \l_shrimp_doi_tl,
+}
+
+\ProcessKeysOptions { shrimp }
+
+\LoadClass{article}
+\RequirePackage{xkeyval}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{etoolbox}
+\RequirePackage[margin=3cm]{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+
+\DeclareOptionX{onecolumn}{\AtBeginDocument{\onecolumn}}
+\DeclareOptionX{twocolumn}{\AtBeginDocument{\twocolumn}}
+
+\ExecuteOptionsX{onecolumn}
+\ProcessOptionsX
+
+
+\RequirePackage{xcolor}
+\definecolor{shrimp}{RGB}{255,90,95} % shrimpositionality pink
+
+\titleformat{\section}[hang]
+  {\normalfont\Large\sffamily}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]
+  {\normalfont\large\sffamily}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]
+  {\normalfont\normalsize\sffamily}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+  {\normalfont\normalsize\sffamily}{}{1em}{}[.]
+%    \end{macrocode}
+% This generates contents for headers and footers of the first page
+%    \begin{macrocode}
+\tl_new:N \l_shrimp_rhead_content 
+\tl_set:Nn \l_shrimp_rhead_content { \color{shrimp}\sffamily Volume~\tl_use:N \l_shrimp_volume_tl,~Issue~\tl_use:N \l_shrimp_issue_tl }
+
+\tl_const:Nn \l_shrimp_doi { 10.32408/compositionality-\tl_use:N \l_shrimp_volume_tl-\tl_use:N \l_shrimp_issue_tl }
+
+\tl_new:N \l_shrimp_lfoot_content 
+\tl_set:Nn \l_shrimp_lfoot_content { \color{shrimp}\sffamily Accepted~in~Compositionality~on~\tl_use:N \l_shrimp_accepted_tl.~
+doi:\tl_use:N \l_shrimp_doi}
+%    \end{macrocode}
+% This takes care of headers and footers using \pkg{fancyhdr}; 
+%    \begin{macrocode}
+\lhead{}
+\chead{}
+\rhead{\ifnum\value{page}>1\else\l_shrimp_rhead_content\fi}
+\lfoot{\ifnum\value{page}>1\else\l_shrimp_lfoot_content\fi}
+\cfoot{}
+\rfoot{\color{shrimp}\sffamily\thepage}
+\let\headrule\relax
+\let\footrulewidth\headrulewidth
+
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+
+%    \end{macrocode}
+%
+%
+% \iffalse
+%</package>
+% \fi
+% \end{implementation}
