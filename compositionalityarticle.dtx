@@ -80,38 +80,70 @@
 {<DATE>}
 {<VERSION>}
 {The Compositionality article class}
-
-\ExplSyntaxOn
-
+%    \end{macrocode}
+%
+% Parse document class options.
+%    \begin{macrocode}
 \keys_define:nn { shrimp }
 {
-    accepted .tl_set:N  = \l_shrimp_accepted_tl,
-    volume   .tl_set:N  = \l_shrimp_volume_tl,
-    issue    .tl_set:N  = \l_shrimp_issue_tl,
-    doi      .tl_set:N  = \l_shrimp_doi_tl,
+  accepted .tl_set:N  = \l_shrimp_accepted_tl,
+  volume   .tl_set:N  = \l_shrimp_volume_tl,
+  issue    .tl_set:N  = \l_shrimp_issue_tl,
 }
 
 \ProcessKeysOptions { shrimp }
-
+%    \end{macrocode}
+%
+% Compute article's DOI.
+%    \begin{macrocode}
+\tl_const:Nn \l_shrimp_doi
+  {
+    10.32408/compositionality-
+    \tl_use:N \l_shrimp_volume_tl
+    -
+    \tl_use:N \l_shrimp_issue_tl
+  }
+%    \end{macrocode}
+%
+% Load \pkg{article} as base class.
+%    \begin{macrocode}
 \LoadClass{article}
-\RequirePackage{xkeyval}
+%    \end{macrocode}
+%
+% Require all dependencies.
+%    \begin{macrocode}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
-\RequirePackage{etoolbox}
-\RequirePackage[margin=3cm]{geometry}
+\RequirePackage{amssymb}
+\RequirePackage{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
-
-\DeclareOptionX{onecolumn}{\AtBeginDocument{\onecolumn}}
-\DeclareOptionX{twocolumn}{\AtBeginDocument{\twocolumn}}
-
-\ExecuteOptionsX{onecolumn}
-\ProcessOptionsX
-
-
 \RequirePackage{xcolor}
-\definecolor{shrimp}{RGB}{255,90,95} % shrimpositionality pink
-
+\RequirePackage{hyperref}
+%    \end{macrocode}
+%
+% Setup page geometry.
+%    \begin{macrocode}
+\geometry{
+  margin=3cm,
+}
+%    \end{macrocode}
+%
+% Setup hyperlink decorations.
+%    \begin{macrocode}
+\hypersetup{
+  colorlinks=true,
+  allcolors=shrimp,
+}
+%    \end{macrocode}
+%
+% Define brand color.
+%    \begin{macrocode}
+\definecolor{shrimp}{RGB}{255,90,95}
+%    \end{macrocode}
+%
+% Set sectioning styles.
+%    \begin{macrocode}
 \titleformat{\section}[hang]
   {\normalfont\Large\sffamily}{\thesection}{1em}{}
 \titleformat{\subsection}[hang]
@@ -121,18 +153,29 @@
 \titleformat{\paragraph}[runin]
   {\normalfont\normalsize\sffamily}{}{1em}{}[.]
 %    \end{macrocode}
-% This generates contents for headers and footers of the first page
+%
+% Compute contents of header and footer of first page.
 %    \begin{macrocode}
-\tl_new:N \l_shrimp_rhead_content 
-\tl_set:Nn \l_shrimp_rhead_content { \color{shrimp}\sffamily Volume~\tl_use:N \l_shrimp_volume_tl,~Issue~\tl_use:N \l_shrimp_issue_tl }
+\tl_const:Nn \l_shrimp_rhead_content 
+  {
+    \color{shrimp} \sffamily
+    Volume ~
+    \tl_use:N \l_shrimp_volume_tl
+    , ~ Issue ~
+    \tl_use:N \l_shrimp_issue_tl
+  }
 
-\tl_const:Nn \l_shrimp_doi { 10.32408/compositionality-\tl_use:N \l_shrimp_volume_tl-\tl_use:N \l_shrimp_issue_tl }
-
-\tl_new:N \l_shrimp_lfoot_content 
-\tl_set:Nn \l_shrimp_lfoot_content { \color{shrimp}\sffamily Accepted~in~Compositionality~on~\tl_use:N \l_shrimp_accepted_tl.~
-doi:\tl_use:N \l_shrimp_doi}
+\tl_const:Nn \l_shrimp_lfoot_content
+  {
+    \color{shrimp} \sffamily
+    Accepted ~ in ~ Compositionality ~ on ~
+    \tl_use:N \l_shrimp_accepted_tl
+    . ~ doi:
+    \tl_use:N \l_shrimp_doi
+  }
 %    \end{macrocode}
-% This takes care of headers and footers using \pkg{fancyhdr}; 
+%
+% Setup \verb|fancy| page style.
 %    \begin{macrocode}
 \lhead{}
 \chead{}
@@ -140,14 +183,24 @@ doi:\tl_use:N \l_shrimp_doi}
 \lfoot{\ifnum\value{page}>1\else\l_shrimp_lfoot_content\fi}
 \cfoot{}
 \rfoot{\color{shrimp}\sffamily\thepage}
-\let\headrule\relax
-\let\footrulewidth\headrulewidth
-
-\pagestyle{fancy}
-\fancypagestyle{plain}{}
-
 %    \end{macrocode}
 %
+% Hide header rule and fit footer rule to page width.
+%    \begin{macrocode}
+\let\headrule\relax
+\let\footrulewidth\headrulewidth
+%    \end{macrocode}
+%
+% Define \verb|plain| page style as clone of \verb|fancy| to handle first page.
+%    \begin{macrocode}
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+%    \end{macrocode}
+%
+% Temporary hack awaiting override of \verb|\maketitle|.
+%    \begin{macrocode}
+\AtBeginDocument{\let\abstractname\relax}
+%    \end{macrocode}
 %
 % \iffalse
 %</package>
