@@ -1,4 +1,13 @@
-\documentclass[a4paper,onecolumn, superscriptaddress,10pt,accepted=2020-05-01,issue=1, volume=2, shorttitle=papers]{compositionalityarticle}
+\documentclass[ a4paper
+              , onecolumn
+              , superscriptaddress
+              , 10pt
+              % , draft
+              , accepted=2020-05-01
+              , issue=1
+              , volume=2
+              , shorttitle=papers
+              ]{compositionalityarticle}
  \pdfoutput=1
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -19,15 +28,11 @@
 \email{latex@compositionality-journal.org}
 \homepage{http://compositionality-journal.org}
 \orcid{0000-0003-0290-4698}
-\thanks{You can use the \texttt{\string\email}, \texttt{\string\homepage}, \texttt{\string\orcid}, and \texttt{\string\thanks} commands to add additional information for the preceding \texttt{\string\author}. If applicable, this can also be used to indicate that a work has previously been published in conference proceedings.}
+\thanks{You can use the \texttt{\textbackslash{}email}, \texttt{\textbackslash{}homepage}, and \texttt{\textbackslash{}thanks} commands to add additional information for the preceding \texttt{\textbackslash{}author}. If applicable, this can also be used to indicate that a work has previously been published in conference proceedings.}
 \affiliation{MIT, Mathematics Department, Boston, USA}
 \author{Nina Otter}
-\email{latex@compositionality-journal.org}
-\orcid{0000-0002-3578-1420}
 \affiliation{UCLA, Mathematics Department, Los Angeles, USA}
 \author{Joshua Tan}
-\email{latex@compositionality-journal.org}
-\orcid{0000-0001-5317-4782}
 \affiliation{University of Oxford, Computer Science Department,
   Oxford, UK}
 \maketitle
@@ -38,12 +43,12 @@
   Compositionality also supports a \texttt{twocolumn} layout with the abstract as a boldface first paragraph.
   Both can be combined with the \texttt{titlepage} option to obtain a format with dedicated title and abstract pages that are not included in the page count.
   This format can be more suitable for long articles.
-  The \texttt{abstract} environment can appear both before and after the \texttt{\string\maketitle} command and calling \texttt{\string\maketitle} is optional, as long as there is an \texttt{abstract}.
-  Both \texttt{abstract} and \texttt{\string\maketitle} however must be placed after all other \texttt{\string\author}, \texttt{\string\affiliation}, etc.\ commands.
+  The \texttt{abstract} environment can appear both before and after the \texttt{\textbackslash{}maketitle} command and calling \texttt{\textbackslash{}maketitle} is optional, as long as there is an \texttt{abstract}.
+  Both \texttt{abstract} and \texttt{\textbackslash{}maketitle} however must be placed after all other \texttt{\textbackslash{}author}, \texttt{\textbackslash{}affiliation}, etc.\ commands.
 In the \texttt{twocolumn} layout and without the \texttt{titlepage} option there can be a paragraph directly following the abstract before the first section.
 In \texttt{onecolumn} format or with a dedicated \texttt{titlepage}, this should be avoided.
 Note that clicking the title links to the page for the published article on \href{http://compositionality-journal.org}{compositionality-journal.org}.
-In this way readers can easily verify whether a work using the \texttt{compositionalityarticle} class was actually published in Compositionality.
+In this way readers can easily verify whether a work using the compositionalityarticle class was actually published in Compositionality.
 \end{abstract}
 
 
@@ -73,8 +78,8 @@ For multi-line equations \texttt{align} is \href{http://tex.stackexchange.com/qu
   H\,|\psi\rangle &= E\,|\psi\rangle\\
   (\openone \otimes A)\,(B \otimes \openone) &= A \otimes B
 \end{align}
-Whether you prefer to refer to equations as Eq.~\eqref{emc}, Equation~\ref{emc}, or just \eqref{emc} is up to you, but please be consistent and use the \texttt{\string\eqref\{\dots\}} command instead of writing \texttt{(\string\ref\{\dots\})}.
-As a courtesy for your readers and referees please suppress equation numbers only if there is a valid reason to do so to not make in unnecessarily difficult to refer to individual results and steps in derivations. 
+Whether you prefer to refer to equations as Eq.~\eqref{emc}, Equation~\ref{emc}, or just \eqref{emc} is up to you, but please be consistent and use the \texttt{\textbackslash{}eqref\{\dots\}} command instead of writing \texttt{(\textbackslash{}ref\{\dots\})}.
+As a courtesy for your readers and referees please suppress equation numbers only if there is a valid reason to do so to not make in unnecessarily difficult to refer to individual results and steps in derivations.
 
 \paragraph{Paragraphs}
 The paragraph is the smallest unit of sectioning.
@@ -96,13 +101,13 @@ If you are formating your bibliography manually, you can cite this work using th
 \begin{verbatim}
 \bibitem{examplecitation}
   Name Surname,
-  Compositionality \textbf{123}, 123456 (1916).
-  \href{https://doi.org/10.22331/idonotexist}
-       {https://doi.org/10.22331/idonotexist}
+  \href{https://doi.org/10.22331/
+        idonotexist}{Compositionality
+        \textbf{123}, 123456 (1916).}
 \end{verbatim}
 
 \begin{theorem}[One citation per bibitem]
-  Important: If you are formatting your bibliography manually, please do not group multiple citations into one \texttt{\string\bibitem}.
+  Important: If you are formatting your bibliography manually, please do not group multiple citations into one \texttt{\textbackslash{}bibitem}.
   It is not nice for your readers and it screws up our automatic extraction of citations and creates superfluous manual work.
 \end{theorem}
 
@@ -132,7 +137,7 @@ in the preamble of your document and then use the \texttt{plainnat} citation sty
 \bibliographystyle{plainnat}
 \bibliography{mybibliography}
 \end{verbatim}
-The \texttt{compositionalityarticle} class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\string\doi} command to create hyperlinks.
+The compositionalityarticle class automatically detects that the \texttt{natbib} package was loaded and redefines the \texttt{\textbackslash{}doi} command to create hyperlinks.
 This is likely the easiest option if you are converting from another document class.
 
 If you want to used BibLaTeX, you can instead add
@@ -148,14 +153,14 @@ where appropriate.
 You then have to upload the .bbl file along with the other source files when submitting to the arXiv.
 Due to incompatibilities between different LaTeX versions we unfortunately cannot recommend this option until the arXiv has updated its LaTeX system \cite{biblatexsubmittingtothearxiv}.
 
-The \texttt{compositionalityarticle} class automatically detects that the \texttt{biblatex} package was loaded, sets the default option \texttt{doi=true} to include the DOI in the bibliography, and declares a suitable field format to make it a hyperlink.
+The compositionalityarticle class automatically detects that the \texttt{biblatex} package was loaded, sets the default option \texttt{doi=true} to include the DOI in the bibliography, and declares a suitable field format to make it a hyperlink.
 Due to issues with \texttt{biber} we recommend to use the \texttt{bibtex} backend of \texttt{biblatex}.
 
 More information on how to get DOI links in your document can be found on StackExchange \cite{howtogetdoilinksinbibliography,automaticallyaddingdoifieldstoahandmadebibliography}.
 Feel free to change the appearance of citations in any way you like by using a different \texttt{bibliographystyle} or via the advanced mechanisms provided by BibLaTeX.
 The only two requirements are that citations must uniquely identify the cited work and that they must contain a DOI hyperlink whenever possible.
 
-To get correct line breaks within links, please add the line 
+To get correct line breaks within links, please add the line
 \begin{verbatim}
 \pdfoutput=1
 \end{verbatim}
@@ -231,7 +236,7 @@ Alternatively you can use a format similar to that of the \texttt{authblk} packa
 Compositionality allows the usage of appendices.
 
 \subsection{Subsection}
-Ideally, the command \texttt{\string\appendix} should be put before the appendices to get appropriate section numbering.
+Ideally, the command \texttt{\textbackslash{}appendix} should be put before the appendices to get appropriate section numbering.
 The appendices are then numbered alphabetically, with numeric (sub)subsection numbering.
 Equations continue to be numbered sequentially.
 \begin{equation}
@@ -239,15 +244,14 @@ Equations continue to be numbered sequentially.
 \end{equation}
 You are free to change this in case it is more appropriate for your article, but a consistent and unambiguous numbering of sections and equations must be ensured.
 
-If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\string\onecolumn\string\newpage} before \texttt{\string\appendix}.   
+If you want your appendices to appear in \texttt{onecolumn} mode but the rest of the document in \texttt{twocolumn} mode, you can insert the command \texttt{\textbackslash{}onecolumn\textbackslash{}newpage} before \texttt{\textbackslash{}appendix}.
 
 \section{Problems and Bugs}
-In case you encounter problems using the \texttt{compositionalityarticle} class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
-If you cannot resolve a problem,  open a bug report in our bug-tracker under 
+In case you encounter problems using the {\tt compositionalityarticle class please analyse the error message carefully and look for help online; \href{http://tex.stackexchange.com/}{http://tex.stackexchange.com/} is an excellent resource.
+If you cannot resolve a problem,  open a bug report in our bug-tracker under
 \begin{center}
-  \href{https://github.com/compositionality/issues}{https://github.com/compositionality/latex-template/issues}.
+  \href{https://github.com/compositionality/latex-template/issues}{https://github.com/compositionality/latex-template/issues}.
 \end{center}
-
 You can also contact us via email under \href{executive-board@compositionality-journal.org}{executive@compositionality-journal.org}, but it may take significantly longer to get a response.
 In any case we need the full source of a document that produces the problem and the log file showing the error to help you.
 
@@ -255,9 +259,9 @@ In any case we need the full source of a document that produces the problem and 
 \begin{thebibliography}{9}
 \bibitem{examplecitation}
   Name Surname,
-  Compositionality \textbf{123}, 123456 (1916).
-  \href{https://doi.org/10.22331/idonotexist}
-       {https://doi.org/10.22331/idonotexist}
+  \href{https://doi.org/10.22331/
+        idonotexist}{Compositionality
+        \textbf{123}, 123456 (1916).}
 
 \bibitem{biblatexsubmittingtothearxiv}
   StackExchange discussion on \href{http://tex.stackexchange.com/questions/26990/biblatex-submitting-to-the-arxiv}{``Biblatex: submitting to the arXiv'' (2017-01-10)}
@@ -267,10 +271,9 @@ In any case we need the full source of a document that produces the problem and 
 
 \bibitem{howtogetdoilinksinbibliography}
   StackExchange discussion on \href{http://tex.stackexchange.com/questions/3802/how-to-get-doi-links-in-bibliography}{``How to get DOI links in bibliography'' (2016-11-18)}
-  
+
 \bibitem{automaticallyaddingdoifieldstoahandmadebibliography}
   StackExchange discussion on \href{http://tex.stackexchange.com/questions/6810/automatically-adding-doi-fields-to-a-hand-made-bibliography}{``Automatically adding DOI fields to a hand-made bibliography'' (2016-11-18)}
-
 \end{thebibliography}
 
 
