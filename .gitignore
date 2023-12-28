@@ -285,3 +285,4 @@ TSWLatexianTemp*
 
 *.pdf
 !logo-eps-converted-to.pdf
+*.tar.gz
