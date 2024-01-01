@@ -3,7 +3,7 @@
 %% it provides the compositionalityarticle class for typesetting articles in
 %% Compositionality - the open journal for the mathematics of composition
 %%
-%% Copyright 2018, 2019, 2020
+%% Copyright 2018, 2019, 2020, 2021, 2022, 2023, 2024
 %% https://compositionality-journal.org
 %%
 %% It is derived from `article.cls' available from
@@ -18,9 +18,9 @@
 %% version 2005/12/01 or later.
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\def\compositionalityarticleversion{2.1}
+\def\compositionalityarticleversion{3.0}
 \ProvidesClass{compositionalityarticle}
-[2020/05/01 v\compositionalityarticleversion
+[2023/11/09 v\compositionalityarticleversion
 class for Compositionality - the open journal for the mathematics of composition (https://compositionality-journal.org)]
 \RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
@@ -421,6 +421,33 @@ class for Compositionality - the open journal for the mathematics of composition
 	\let\subsectionmark\@gobble
 }
 
+
+
+% V.30 (Spring 2023): headers for first page:
+\RequirePackage{fancyhdr}
+\fancypagestyle{firststyle}
+{
+    \chead{\hspace{4em}\textcolor{compositionalitypink}{\sffamily \scriptsize ISSN 2631-4444}}
+    \lhead{\hspace{-1pt}\biglogo
+    \begin{minipage}[t]{5cm}{\textcolor{compositionalitypink}{{\sffamily \large 
+	Compositionality }
+	\\[-2pt]
+	{\scriptsize 
+  \url{http://compositionality-journal.org}}}}\end{minipage}}
+    \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
+	\ifcsdef{@volume}{ Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
+	}{} (2023)}}
+% 	, 1--\pageref{lastpage}
+	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
+	{\ifcsdef{receiveddate}{Received \receiveddate;}{} 
+% 	\ifcsdef{reviseddate}{revised \reviseddate;}{}
+	accepted \ifcsdef{@accepteddate}{\@accepteddate;}{}
+% 	\ifcsdef{publisheddate}{published \publisheddate.}{}  \hfill \\[-2pt]
+	\ifcsdef{paperdoi}{available from \url{\paperdoi}}{}}
+}}
+}
+% End-of-v3.0-adjustment
+
 \iftoggle{@titlepage}
 {
 	\newcommand\maketitle{\begin{titlepage}%
@@ -461,7 +488,9 @@ class for Compositionality - the open journal for the mathematics of composition
 		{\ifnumequal{\col@number}{\@ne}{\@maketitle}{\twocolumn[\@maketitle]}}
 		{\global\@topnum\z@   % Prevents figures from going at top of page.
 		 \@maketitle}
-	\thispagestyle{fancy}%\@thanks
+	% V3.0 (Spring 2023)
+	\thispagestyle{firststyle}%\@thanks
+	% End-of-adjutment
 	\endgroup
 	\setcounter{footnote}{0}%
 	\global\let\thanks\relax
@@ -482,6 +511,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	\sffamily
 	\null
 	\let \footnote \thanks
+	\vskip 3.5em%V3.0: to make space for bigger first-page header
 	\noindent%
 	\begin{minipage}{\textwidth}%
           \iftoggle{@titlepage}{\centering}{}%
@@ -623,7 +653,7 @@ class for Compositionality - the open journal for the mathematics of composition
 		\ifdefempty{\maketitle}{\relax{}}{\maketitle}
 		\titlepage
 		\null\vfil
-		\thispagestyle{empty}%
+		\thispagestyle{firststyle}%V3.0: first-page headers
 		\@beginparpenalty\@lowpenalty
 		\begin{center}%
 			\bfseries \abstractname
@@ -668,7 +698,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	\ifbool{@twocolumn}
 		{\toggletrue{@restonecol}\onecolumn\newpage}
 		{\togglefalse{@restonecol}\newpage}
-	\thispagestyle{empty}%
+	\thispagestyle{firststyle}% v3.0: first-page headers
 	\setcounter{page}\@ne
 }{%
 	\iftoggle{@restonecol}
@@ -925,15 +955,23 @@ class for Compositionality - the open journal for the mathematics of composition
 \@blacklistpackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrule}{}
-\renewcommand{\footrule}{\vbox to 0pt{\hbox to\headwidth{\color{compositionalitygray}\leaders\hrule\hfil}\vss}}
+\renewcommand{\footrule}{\vbox to 0pt{\hbox to\headwidth{\color{white}\leaders\hrule\hfil}\vss}}
 \fancyhf{}
 \iftoggle{@accepted}
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 {\fancyfoot[C]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
 \iftoggle{@accepted}
-	{\fancyfoot[L]{\usebox{\@compositionalityacceptedbox}}
-	\fancyhead[R]{\textcolor{compositionalitypink}{\scriptsize{\ifcsdef{@volume}{Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue }{}. ISSN 2631-4444}}}}
-%
+% V3.0 (Spring 2023): new headers and footers:
+	{\fancyfoot[L]{\sffamily\scriptsize 
+	\logo\textcolor{compositionalitypink}{\scriptsize{ {\em Compositionality}, 
+	\ifcsdef{@volume}{Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
+	}{} (2023)%, 1--\pageref{lastpage}.
+% 	\ifcsdef{paperdoi}{\url{\paperdoi}}{}
+	}}}
+	\fancyhead[L]{\textcolor{compositionalitypink}{\sffamily 
+	\scriptsize{\ifcsdef{authorsforheader}{\authorsforheader}{\@authorsonly}}}}
+	\fancyhead[R]{\textcolor{compositionalitypink}{\sffamily \scriptsize{\detokenize\expandafter{\@title}}}}}
+% end-of-V3.0 adjustments
 
 % validate the date format to be YYYY-MM-DD
 \AtBeginDocument{
@@ -1032,8 +1070,12 @@ class for Compositionality - the open journal for the mathematics of composition
 					{\gdef\@titleforurl{\@titleexpanded}}%
 				  \href{https://compositionality-journal.org/\@shorttitle/}
 				  {%
-						\color{compositionalitypink}{%
-                                                  \@printtitletextwithappropriatefontsize\unskip%
+				   %March 2023: This is to fix the shortcoming that href in dvips mode 
+				   %cannot break lines:
+						{\begin{minipage}{\textwidth}\raggedright \color{compositionalitypink}{%
+												 \@printtitletextwithappropriatefontsize}
+											   \end{minipage}
+											   \unskip%
 						}%
                                               }%
 			}%
@@ -1291,8 +1333,11 @@ class for Compositionality - the open journal for the mathematics of composition
 			\newsavebox\@compositionalityacceptedbox
 
 
+			  % V3.0: for the new first-page header:
+			  \newcommand {\biglogo} 
+			  {\raisebox{-0.3cm}[0.1cm]{\includegraphics[width=0.065\textwidth, height=0.065\textwidth]{logo.eps}}}
 			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
-			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.}}}}
+			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.}}}}
 
 
 
@@ -1320,8 +1365,8 @@ class for Compositionality - the open journal for the mathematics of composition
 	\providecommand{\tnoteref}[1]{\@elsearticlecommandsnotsupportederror} %title footnote reference
 }
 
-% set default options for hyperref to make links more pretty, and add backwards pagerefs to bibliography
-\PassOptionsToPackage{colorlinks=true,hyperindex,backref=page}{hyperref}
+% set default options for hyperref to make links more pretty
+\PassOptionsToPackage{colorlinks=true,hyperindex}{hyperref}
 
 \iftoggle{@unpublished}
 	{\PassOptionsToPackage{allcolors=gray}{hyperref}}
