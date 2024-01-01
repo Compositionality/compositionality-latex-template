@@ -955,7 +955,7 @@ class for Compositionality - the open journal for the mathematics of composition
 \@blacklistpackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrule}{}
-\renewcommand{\footrule}{\vbox to 0pt{\hbox to\headwidth{\color{compositionalitygray}\leaders\hrule\hfil}\vss}}
+\renewcommand{\footrule}{\vbox to 0pt{\hbox to\headwidth{\color{white}\leaders\hrule\hfil}\vss}}
 \fancyhf{}
 \iftoggle{@accepted}
 {\fancyfoot[R]{\sffamily\iftoggle{@unpublished}{\thepage}{\textcolor{compositionalitypink}{\thepage}}}}
