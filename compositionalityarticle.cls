@@ -20,7 +20,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \def\compositionalityarticleversion{3.0}
 \ProvidesClass{compositionalityarticle}
-[2023/11/09 v\compositionalityarticleversion
+[2024/01/01 v\compositionalityarticleversion
 class for Compositionality - the open journal for the mathematics of composition (https://compositionality-journal.org)]
 \RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
@@ -436,7 +436,7 @@ class for Compositionality - the open journal for the mathematics of composition
   \url{http://compositionality-journal.org}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{@volume}{ Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
-	}{} (2023)}}
+	}{} (2024)}}
 % 	, 1--\pageref{lastpage}
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	{\ifcsdef{receiveddate}{Received \receiveddate;}{} 
@@ -965,7 +965,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\fancyfoot[L]{\sffamily\scriptsize 
 	\logo\textcolor{compositionalitypink}{\scriptsize{ {\em Compositionality}, 
 	\ifcsdef{@volume}{Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
-	}{} (2023)%, 1--\pageref{lastpage}.
+	}{} (2024)%, 1--\pageref{lastpage}.
 % 	\ifcsdef{paperdoi}{\url{\paperdoi}}{}
 	}}}
 	\fancyhead[L]{\textcolor{compositionalitypink}{\sffamily 
