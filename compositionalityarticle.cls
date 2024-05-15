@@ -15,6 +15,7 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 \RequirePackage{lmodern}
+
 \ProvidesExplClass
 {compositionality}
 {<DATE>}
@@ -62,16 +63,17 @@
   {\normalfont\normalsize\sffamily}{}{1em}{}[.]
 \tl_const:Nn \l_shrimp_rhead_content
   {
-    \color{shrimp} \sffamily
+    \color{shrimp} \sffamily\footnotesize
     Volume ~
     \tl_use:N \l_shrimp_volume_tl
     , ~ Issue ~
-    \tl_use:N \l_shrimp_issue_tl
+    \tl_use:N \l_shrimp_issue_tl \kern1em
+    ISSN ~ 2631-4444
   }
 
 \tl_const:Nn \l_shrimp_lfoot_content
   {
-    \color{shrimp} \sffamily
+    \color{shrimp} \sffamily\footnotesize
     Accepted ~ in ~ Compositionality ~ on ~
     \tl_use:N \l_shrimp_accepted_tl
     . ~ doi:
@@ -137,7 +139,7 @@
   \sffamily\small\color{gray}
   \int_step_inline:nn { \seq_count:N \g__shrimp_authors_seq } {
     \textsuperscript { \int_to_arabic:n { ##1 } }
-    \seq_item:Nn \g__shrimp_affiliation_seq { ##1 }\newline
+    \seq_item:Nn \g__shrimp_affiliation_seq { ##1 }\smallskip\newline
   }
   \group_end:
 }
