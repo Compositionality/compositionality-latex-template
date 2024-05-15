@@ -72,7 +72,6 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 \RequirePackage{lmodern}
-
 %    \end{macrocode}
 %
 % Identify the package and give the over all version information.
@@ -123,7 +122,11 @@
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
+\RequirePackage{xkeyval}
 \RequirePackage{hyperref}
+\RequirePackage{backref}
+\PassOptionsToPackage{verbose=false,hyperpageref}{backref}
+\def\backrefpagesname{}
 %    \end{macrocode}
 %
 % Setup page geometry.

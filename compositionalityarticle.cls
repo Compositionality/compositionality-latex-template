@@ -15,7 +15,6 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 \RequirePackage{lmodern}
-
 \ProvidesExplClass
 {compositionality}
 {<DATE>}
@@ -23,9 +22,11 @@
 {The Compositionality article class}
 \keys_define:nn { shrimp }
 {
-  accepted .tl_set:N  = \l_shrimp_accepted_tl,
-  volume   .tl_set:N  = \l_shrimp_volume_tl,
-  issue    .tl_set:N  = \l_shrimp_issue_tl,
+  accepted  .tl_set:N  = \l_shrimp_accepted_tl,
+  volume    .tl_set:N  = \l_shrimp_volume_tl,
+  issue     .tl_set:N  = \l_shrimp_issue_tl,
+  published .bool_set:N = \l_shrimp_published_bool,
+  published .default:n  = false,
 }
 
 \ProcessKeysOptions { shrimp }
@@ -44,7 +45,11 @@
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
+\RequirePackage{xkeyval}
 \RequirePackage{hyperref}
+\RequirePackage{backref}
+\PassOptionsToPackage{verbose=false,hyperpageref}{backref}
+\def\backrefpagesname{}
 \geometry{
   margin=3cm,
 }
@@ -61,23 +66,35 @@
   {\normalfont\normalsize\sffamily}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}[runin]
   {\normalfont\normalsize\sffamily}{}{1em}{}[.]
-\tl_const:Nn \l_shrimp_rhead_content
+\bool_if:nTF \l_shrimp_published_bool
   {
-    \color{shrimp} \sffamily\footnotesize
-    Volume ~
-    \tl_use:N \l_shrimp_volume_tl
-    , ~ Issue ~
-    \tl_use:N \l_shrimp_issue_tl \kern1em
-    ISSN ~ 2631-4444
+    \tl_const:Nn \l_shrimp_rhead_content
+    {
+      \color{shrimp} \sffamily\footnotesize
+      Volume ~
+      \tl_use:N \l_shrimp_volume_tl
+      , ~ Issue ~
+      \tl_use:N \l_shrimp_issue_tl \kern1em
+      ISSN ~ 2631-4444
+    }
+  }
+  {
+    \tl_const:Nn \l_shrimp_rhead_content \c_empty_tl
   }
 
-\tl_const:Nn \l_shrimp_lfoot_content
+\bool_if:nTF \l_shrimp_published_bool
   {
-    \color{shrimp} \sffamily\footnotesize
-    Accepted ~ in ~ Compositionality ~ on ~
-    \tl_use:N \l_shrimp_accepted_tl
-    . ~ doi:
-    \tl_use:N \l_shrimp_doi
+  \tl_const:Nn \l_shrimp_lfoot_content
+    {
+      \color{shrimp} \sffamily\footnotesize
+      Accepted ~ in ~ Compositionality ~ on ~
+      \tl_use:N \l_shrimp_accepted_tl
+      . ~ doi:
+      \tl_use:N \l_shrimp_doi
+    }
+  }
+  {
+    \tl_const:Nn \l_shrimp_rhead_content \c_empty_tl
   }
 \lhead{}
 \chead{}
