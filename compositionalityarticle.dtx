@@ -71,6 +71,7 @@
 \RequirePackage{expl3}[2023/05/11]
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
+\RequirePackage{lmodern}
 %    \end{macrocode}
 %
 % Identify the package and give the over all version information.
@@ -197,10 +198,7 @@
 \fancypagestyle{plain}{}
 %    \end{macrocode}
 %
-% Temporary hack awaiting override of \verb|\maketitle|.
-%    \begin{macrocode}
-\AtBeginDocument{\let\abstractname\relax}
-%    \end{macrocode}
+
 %
 %    \begin{macrocode}
 
@@ -252,8 +250,7 @@
   \sffamily\small\color{gray}
   \int_step_inline:nn { \seq_count:N \g_@@_authors_seq } {
     \textsuperscript { \int_to_arabic:n { ##1 } }
-    \seq_item:Nn \g_@@_affiliation_seq { ##1 }
-    \par
+    \seq_item:Nn \g_@@_affiliation_seq { ##1 }\newline
   }
   \group_end:
 }
@@ -303,14 +300,18 @@
 }
 
 \NewDocumentCommand{\printtitlestuff}{}{
-  \@@_print_title_authors:
-  \par\hrulefill\par
-  \@@_print_title_affiliations:
-  \par\hrulefill\par
-  \@@_print_title_footnotes:
-  \par\hrulefill\par
+  \global \@topnum \z@%\newpage\null
+    \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
+    \noindent\@@_print_title_authors:
+    \par\bigskip
+    \noindent\@@_print_title_affiliations:
+    \par
+    \noindent\@@_print_title_footnotes:
+    \par
 }
-
+\AtBeginDocument{\renewenvironment{abstract}
+{\small\quotation\noindent\ignorespaces}
+{\endquotation}}
 %    \end{macrocode}
 %
 % \iffalse
