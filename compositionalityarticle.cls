@@ -47,8 +47,8 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{hyperref}
+\PassOptionsToPackage{hyperpageref}{backref}
 \RequirePackage{backref}
-\PassOptionsToPackage{verbose=false,hyperpageref}{backref}
 \def\backrefpagesname{}
 \geometry{
   margin=3cm,
@@ -56,6 +56,7 @@
 \hypersetup{
   colorlinks=true,
   allcolors=shrimp,
+  backref=page
 }
 \definecolor{shrimp}{RGB}{255,90,95}
 \titleformat{\section}[hang]

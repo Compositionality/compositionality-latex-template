@@ -124,8 +124,8 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{hyperref}
+\PassOptionsToPackage{hyperpageref}{backref}
 \RequirePackage{backref}
-\PassOptionsToPackage{verbose=false,hyperpageref}{backref}
 \def\backrefpagesname{}
 %    \end{macrocode}
 %
@@ -141,6 +141,7 @@
 \hypersetup{
   colorlinks=true,
   allcolors=shrimp,
+  backref=page
 }
 %    \end{macrocode}
 %
