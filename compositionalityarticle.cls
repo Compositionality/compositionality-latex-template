@@ -48,7 +48,7 @@
 \RequirePackage{xkeyval}
 \RequirePackage{hyperref}
 \PassOptionsToPackage{hyperpageref}{backref}
-\RequirePackage{backref}
+%\RequirePackage{backref}
 \def\backrefpagesname{}
 \geometry{
   margin=3cm,
@@ -95,7 +95,7 @@
     }
   }
   {
-    \tl_const:Nn \l_shrimp_rhead_content \c_empty_tl
+    \tl_const:Nn \l_shrimp_lfoot_content \c_empty_tl
   }
 \lhead{}
 \chead{}
