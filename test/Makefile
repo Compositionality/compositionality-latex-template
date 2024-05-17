@@ -22,7 +22,7 @@ src/%: tar/%.tar.gz
 	mkdir -p $@
 	tar -xvzf $< -C $@
 	grep -lr "{compositionalityarticle}" $@/*.tex \
-	 |  while read -r path; do mv "$$path" "$${path%/*}/main.tex"; done
+	 |  while read -r path; do [ -f "$${path%/*}/main.tex" ] || mv "$$path" "$${path%/*}/main.tex"; done
 	sed -i "s%{compositionalityarticle}%{../../../compositionalityarticle}%" $@/main.tex
 	cp -f ../logo.eps $@
 	cp -f ../ORCIDiD_iconvector.pdf $@
