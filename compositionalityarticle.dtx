@@ -158,19 +158,20 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{graphicx}
-
-% Define brand color.
-%    \begin{macrocode}
-\definecolor{shrimp}{RGB}{255,90,95}
+\RequirePackage{hyperref}
 %    \end{macrocode}
 %
 % Setup hyperlink decorations.
-\PassOptionsToPackage{colorlinks=true,hyperindex,allcolors=shrimp}{hyperref}
-\RequirePackage{hyperref}
-
+%    \begin{macrocode}
+\hypersetup{colorlinks=true,hyperindex,allcolors=shrimp}
 \PassOptionsToPackage{hyperpageref}{backref}
 \RequirePackage{backref} % WARNING: this is incompatible with the user loading biblatex
 \def\backrefpagesname{}
+%    \end{macrocode}
+%
+% Define brand color.
+%    \begin{macrocode}
+\definecolor{shrimp}{RGB}{255,90,95}
 %    \end{macrocode}
 %
 % Setup page geometry.
@@ -349,26 +350,29 @@
   }
   \group_end:
 }
-
+%    \end{macrocode}
+% 
+% Definition of acknowledgments subsection
+%    \begin{macrocode}
 \newcommand*{\acknowledgmentsname}{Acknowledgments}
 \newcommand{\acknowledgments}[1]{%
 	\section*{\acknowledgmentsname}%
 	#1%
 }
-
-\let\address\affiliation % NOTE: this may need a fake optional argument
-
-% TODO: allow fake shorttitle on \title
-% TODO: option clashes for hyperrerf and geometry
-% TODO: Package biblatex Error: Incompatible package 'backref'
-
+%    \end{macrocode}
+%
 % This is here only for retrocompatibility issues
+%    \begin{macrocode}
 \bool_if:nTF \l_shrimp_compat_bool {
+  \let\address\affiliation % NOTE: this may need a fake optional argument
   \newcommand{\keywords}[1]{}
   \let\oldtitle\title 
   \renewcommand{\title}[2][]{\oldtitle{#2}}
 } {}
-
+%    \end{macrocode}
+%
+% Redefine maketitle
+%    \begin{macrocode}
 \renewcommand{\maketitle}{
   \global \@topnum \z@
     \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
@@ -379,7 +383,10 @@
     \noindent\@@_print_title_footnotes:
     \par
 }
-
+%    \end{macrocode}
+%
+% Abstractname is empty
+%    \begin{macrocode}
 \AtBeginDocument{\renewenvironment{abstract}
 {\small\quotation\noindent\ignorespaces}
 {\endquotation}}
