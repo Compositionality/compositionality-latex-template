@@ -341,7 +341,7 @@
 } {}
 
 \renewcommand{\maketitle}{
-  \global \@topnum \z@%\newpage\null
+  \global \@topnum \z@
     \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
     \noindent\@@_print_title_authors:
     \par\bigskip
@@ -350,7 +350,6 @@
     \noindent\@@_print_title_footnotes:
     \par
 }
-%\let\maketitle\printtitlestuff
 
 \AtBeginDocument{\renewenvironment{abstract}
 {\small\quotation\noindent\ignorespaces}
