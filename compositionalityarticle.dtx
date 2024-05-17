@@ -192,7 +192,7 @@
     }
   }
   {
-    \tl_const:Nn \l_shrimp_rhead_content \c_empty_tl
+    \tl_const:Nn \l_shrimp_lfoot_content \c_empty_tl
   }
 %    \end{macrocode}
 %
@@ -319,7 +319,20 @@
   \group_end:
 }
 
-\NewDocumentCommand{\printtitlestuff}{}{
+\newcommand*{\acknowledgmentsname}{Acknowledgments}
+\newcommand{\acknowledgments}[1]{%
+	\section*{\acknowledgmentsname}%
+	#1%
+}
+
+\let\address\affiliation % NOTE: this may need a fake optional argument
+
+% TODO: allow fake shorttitle on \title
+% TODO: option clashes for hyperrerf and geometry
+% TODO: Package biblatex Error: Incompatible package 'backref'
+
+%\NewDocumentCommand{\printtitlestuff}{}{
+\renewcommand{\maketitle}{
   \global \@topnum \z@%\newpage\null
     \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
     \noindent\@@_print_title_authors:
@@ -329,6 +342,8 @@
     \noindent\@@_print_title_footnotes:
     \par
 }
+%\let\maketitle\printtitlestuff
+
 \AtBeginDocument{\renewenvironment{abstract}
 {\small\quotation\noindent\ignorespaces}
 {\endquotation}}

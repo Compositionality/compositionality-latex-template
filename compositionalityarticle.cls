@@ -206,7 +206,13 @@
   \group_end:
 }
 
-\NewDocumentCommand{\printtitlestuff}{}{
+\newcommand*{\acknowledgmentsname}{Acknowledgments}
+\newcommand{\acknowledgments}[1]{%
+\section*{\acknowledgmentsname}%
+#1%
+}
+
+\renewcommand{\maketitle}{
   \global \@topnum \z@%\newpage\null
     \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
     \noindent\__shrimp_print_title_authors:
@@ -216,6 +222,7 @@
     \noindent\__shrimp_print_title_footnotes:
     \par
 }
+
 \AtBeginDocument{\renewenvironment{abstract}
 {\small\quotation\noindent\ignorespaces}
 {\endquotation}}
