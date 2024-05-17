@@ -12,6 +12,7 @@
 *.cb2
 .*.lb
 compositionalityarticle.cls
+build/
 *.hd
 ## Intermediate documents:
 *.dvi

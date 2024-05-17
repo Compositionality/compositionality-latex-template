@@ -10,5 +10,17 @@ The class may be distributed and/or modified under the conditions of the LaTeX P
 If you find any bugs when using the article class or the template, please help us by opening a report in our bug-tracker under https://github.com/compositionality/latex-template/issues. 
 Please reproduce the problem by providing the full source of a minimal working LaTeX file, as well as the log file showing the error. 
 
+### Build system 
+
+To build this package we use `l3build` from [CTAN](https://ctan.org/pkg/l3build).
+
+
+```bash
+l3build doc # builds documentation
+l3build ctan # builds the package to upload on CTAN
+l3build clean # removes build artifacts
+```
+
+
 ## Acknowledgements
 This class is heavily based on the `quantumarticle' class for the journal https://quantum-journal.org. We thank the editors of Quantum for sharing their experiences and expertise. 
