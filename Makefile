@@ -41,19 +41,20 @@ clean:
 clobber: clean
 	rm -f $(PKG).{ins,pdf,sty,tar.gz}
 
-# interpolate:
-# 	sed -i "$(INTERPOLATIONS)" $(PKG).dtx
-createpapers:
-	mkdir -p all_test_papers
+all_test_papers/%:
+	mkdir $@
+	curl "http://arxiv.org/src/$*" | tar -xz -C $@
+	grep -lr "{compositionalityarticle}" $@/*.tex \
+	 |  while read -r path; do mv "$$path" "$${path%/*}/main.tex"; done
+	sed -i "s%{compositionalityarticle}%{../../compositionalityarticle}%" $@/main.tex
+	cp logo.eps $@/
+
+all_test_papers:
+	mkdir -p $@
 	curl --silent 'https://export.arxiv.org/api/query?search_query=jr%3ACompositionality&start=0&max_results=50' \
 		| grep '<id>' \
 		| grep -Po '(?<=http://arxiv.org/abs/)[0-9v.]+' \
- 	| while read -r link; do mkdir "all_test_papers/$$link" && curl "http://arxiv.org/src/$$link" | tar -xz -C "all_test_papers/$$link"; done
-	grep -lr "{compositionalityarticle}" all_test_papers/*/*.tex \
-	  |  while read -r path; do mv "$$path" "$${path%/*}/main.tex"; done
-	for file in all_test_papers/*/main.tex; do \
- sed -i "s%{compositionalityarticle}%{../../compositionalityarticle}%" "$$file"; \
- done
+ 	| while read -r link; do make $@/$$link; done
 
 canceltests:
 	rm -rf all_test_papers/
@@ -62,8 +63,7 @@ test:
 	for folder in all_test_papers/*; do \
 	cd $$folder && \
 	pwd && \
-	latexmk -C && \
-	latexmk -pdf -halt-on-error -shell-escape main.tex || cd ..; \
+	latexmk -gg -quiet -halt-on-error -shell-escape main.tex || cd ..; \
 	done
 
 log:
@@ -72,6 +72,9 @@ log:
 	texfot --ignore "LaTeX Warning: Citation" \
 	       --ignore "LaTeX Warning: Reference" \
 								--ignore "This is pdfTeX," \
+								--ignore "epstopdf" \
+								--ignore "LaTeX Warning: " \
+								--ignore "Package \w+ Warning: " \
 								--ignore "Package natbib Warning: Citation" \
 								--ignore "Package hyperref Warning:" \
 	       --ignore "LaTeX Warning: You have requested document class" \
@@ -80,3 +83,6 @@ log:
 	       --ignore 'Overfull \\hbox' \
 	cat $$logfile; \
 	done
+
+all_test_papers/%/main.pdf:
+	cd all_test_papers/$* &&	latexmk -gg -shell-escape main.tex
