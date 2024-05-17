@@ -27,13 +27,6 @@ watch:
 gawk:
 	ls $(PKG).dtx | entr -c texfot pdflatex -interaction=nonstopmode $(PKG).dtx
 
-dev:
-	ls $(PKG).dtx $(PKG)-doc-new.tex | entr -c make dev2
-
-dev2:
-	make $(PKG).cls
-	texfot pdflatex -interaction=nonstopmode $(PKG)-doc-new.tex
-
 clean:
 	rm -f $(PKG).{aux,dep,glo,gls,hd,idx,ilg,ind,listing,log,out,brf}
 
