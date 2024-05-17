@@ -125,9 +125,19 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
+\RequirePackage{graphicx}
+
+% Define brand color.
+%    \begin{macrocode}
+\definecolor{shrimp}{RGB}{255,90,95}
+%    \end{macrocode}
+%
+% Setup hyperlink decorations.
+\PassOptionsToPackage{colorlinks=true,hyperindex,allcolors=shrimp}{hyperref}
 \RequirePackage{hyperref}
+
 \PassOptionsToPackage{hyperpageref}{backref}
-\RequirePackage{backref} % TODO: this is incompatible with the user loading biblatex
+\RequirePackage{backref} % WARNING: this is incompatible with the user loading biblatex
 \def\backrefpagesname{}
 %    \end{macrocode}
 %
