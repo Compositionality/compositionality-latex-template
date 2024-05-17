@@ -20,7 +20,3 @@ l3build doc # builds documentation
 l3build ctan # builds the package to upload on CTAN
 l3build clean # removes build artifacts
 ```
-
-
-## Acknowledgements
-This class is heavily based on the `quantumarticle' class for the journal https://quantum-journal.org. We thank the editors of Quantum for sharing their experiences and expertise. 
