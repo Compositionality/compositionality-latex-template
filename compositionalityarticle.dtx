@@ -370,7 +370,7 @@
       \sffamily
       \seq_item:Nn \g_@@_authors_seq { ##1 }:~
       \seq_use:Nn \l_tmpa_seq { ,~ }
-      \seq_if_empty:NF \l_tmpa_seq {} {.}
+      \seq_if_empty:NF \l_tmpa_seq {} {.~}
       \seq_item:Nn \g_@@_thanks_seq { ##1 }
     }
   }
