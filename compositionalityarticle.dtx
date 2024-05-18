@@ -12,7 +12,7 @@
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
-
+\usepackage{tcolorbox}
 \begin{document}
   \DocInput{\jobname.dtx}
   \PrintChanges
@@ -48,23 +48,38 @@
 % \section{Documentation}
 %
 % \subsection{Documentclass options}
+% As usual, options for the documentclass are optional arguments of \texttt{documentclass}:
+%   \begin{syntax}
+%     \cs{documentclass}\oarg{option1,option2,\dots}\{compositionalityarticle\}
+%   \end{syntax}
 % \begin{function}{
 %   accepted,
 %   volume,
 %   issue,
 %   published,
 % }
-%   \begin{syntax}
-%     accepted=\meta{bool}
-%     volume=\meta{integer}
-%     issue=\meta{integer}
-%     published=\meta{YYYY-MM-DD}
-%   \end{syntax}
+% \begin{syntax}
+  %   accepted=\meta{YYYY-MM-DD}
+  %   volume=\meta{integer}
+  %   issue=\meta{integer}
+  %   published=\meta{bool}
+% \end{syntax}
 %
-%   The \texttt{accepted} key does things
-%
+% The \texttt{documentclass} options form the bibliographic information for the paper. The \texttt{accepted} key accepts a string in the format \texttt{YYYY-MM-DD}. The fields \texttt{volume} and \texttt{issue} are integers \texttt{[0-9]+}. If the Boolean option \texttt{accepted} is flagged \texttt{true}, the class generates a watermark on the bottom and top-right of the first page of the paper, containing the metadata: date of acceptance, DOI (generated from \texttt{volume} and \texttt{issue}), and volume/issue pair. 
 % \end{function}
+% \begin{tcolorbox}[
+%   colback=cyan!5!white,
+%   colframe=cyan,
+%   sharp corners,
+%   boxrule=1pt,
+% ]
+% Most authors need a DOI for their paper as soon as possible. When a paper is accepted in Compositionality the DOI will be always formed as
+% \begin{center} \tt https://www.doi.org/10.32408/compositionality-\meta{volume}-\meta{issue} \end{center}
+% As soon as the paper is assigned a volume/issue pair, this information can be used by authors, irregardless of the publication queue.
+% \end{tcolorbox}
+%
 % \subsection{Metadata handling}
+% The metadata for the paper is handled by a series of self-explanatory macros (author accepts a single name):
 % \begin{function}{
 % \author,
 % \affiliation,
@@ -74,10 +89,21 @@
 % \thanks
 % }
 %   \begin{syntax}
-%     \cs{author}\marg{author name}
+%     \cs{author}\marg{author's name}
+%     \cs{affiliation}\marg{author's university/school}
+%     \cs{email}\marg{author's email}
+%     \cs{orcid}\marg{author's orcid}
+%     \cs{homepage}\marg{author's personal webpage (if available)}
 %   \end{syntax}
+% So, \cs{author}\texttt{\{Jane Doe, John Doe\}} and \cs{affiliation}\texttt{\{University of Wakanda, Narnia School of Technology\}} is not the correct syntax (although it doesn't raise an error). Instead: \dots
 %
-%
+% \end{function}
+% \begin{function}
+% {\title}
+% \begin{syntax} 
+%   \cs{title}\marg{the paper's title}
+% \end{syntax}
+% Once all these fields are filled, \cs{maketitle} will print all the metadata in the right place.
 % \end{function}
 % \end{documentation}
 %
