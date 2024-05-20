@@ -97,19 +97,19 @@
 %     \cs{thanks}\marg{author's acknowledgements (if needed)}
 %   \end{syntax}
 % So, \cs{author}\texttt{\{Jane Doe, John Doe\}} and \cs{affiliation}\texttt{\{University of Wakanda, Narnia School of Technology\}} is not the correct syntax (although it doesn't raise an error). Instead, use
-% \begin{verbatim}
-%  \author{Peter Freyd}
-%  \affiliation{University of Pennsylvania}
-%  \email{peter.freyd@example.com}
-%  \orcid{0000-0003-2025-7860}
-%  \homepage{https://www.math.upenn.edu/~pjf}
-%  %%%
-%  \author{John von Neumann}
-%  \affiliation{Institute for Advanced Study, Princeton}
-%  \email{john.vonneumann@example.com}
-%  \orcid{0000-0001-5864-1937}
-%  \homepage{https://www.ias.edu/vonneumann}
-% \end{verbatim}
+% \begin{minted}{latex}
+% \author{Peter Freyd}
+% \affiliation{University of Pennsylvania}
+% \email{peter.freyd@example.com}
+% \orcid{0000-0003-2025-7860}
+% \homepage{https://www.math.upenn.edu/~pjf}
+% %%%
+% \author{John von Neumann}
+% \affiliation{Institute for Advanced Study, Princeton}
+% \email{john.vonneumann@example.com}
+% \orcid{0000-0001-5864-1937}
+% \homepage{https://www.ias.edu/vonneumann}
+% \end{minted}
 %
 % The author's \href{https://orcid.org}{orcid} ID should be specified as four four-digits groups like \texttt{0123-0123-0123-0123}.
 % \end{function}
@@ -337,7 +337,8 @@
   \sffamily\large
   \int_step_inline:nn { \seq_count:N \g_@@_authors_seq } {
     \seq_item:Nn \g_@@_authors_seq { ##1 }
-    \textsuperscript { \int_to_arabic:n { ##1 } }
+    \tl_set:Nf \l_tmpa_tl { \seq_item:Nn \g_@@_affiliation_seq { ##1 } }
+    \tl_if_empty:NTF \l_tmpa_tl {  } { \textsuperscript { \int_to_arabic:n { ##1 } } }
     \int_compare:nNnTF { ##1 + 1 } = { \seq_count:N \g_@@_authors_seq } { , ~ and ~ } { }
     \int_compare:nNnTF { ##1 + 1 } < { \seq_count:N \g_@@_authors_seq } { , ~ } { }
   }
@@ -348,8 +349,11 @@
   \group_begin:
   \sffamily\small\color{gray}
   \int_step_inline:nn { \seq_count:N \g_@@_authors_seq } {
-    \textsuperscript { \int_to_arabic:n { ##1 } }
-    \seq_item:Nn \g_@@_affiliation_seq { ##1 }\smallskip\newline
+    \tl_set:Nf \l_tmpa_tl { \seq_item:Nn \g_@@_affiliation_seq { ##1 } }
+    \tl_if_empty:NTF \l_tmpa_tl {  } { 
+      \textsuperscript { \int_to_arabic:n { ##1 } }
+      \tl_use:N \l_tmpa_tl\smallskip\newline 
+    }
   }
   \group_end:
 }
@@ -421,6 +425,7 @@
 % Redefine maketitle
 %    \begin{macrocode}
 \renewcommand{\maketitle}{
+  \@@_check_authors_ge_one:
   \global \@topnum \z@
     \noindent{\normalfont\huge\sffamily\color{shrimp}\@title} \par\bigskip
     \noindent\@@_print_title_authors:
