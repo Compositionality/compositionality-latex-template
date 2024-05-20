@@ -302,35 +302,55 @@
 \seq_new:N \g_@@_webpage_seq
 \seq_new:N \g_@@_thanks_seq
 
-\RenewDocumentCommand{\author}{m}{
-  \seq_gput_right:Nn \g_@@_authors_seq {#1}
-}
-
-\NewDocumentCommand{\affiliation}{m}{
-  \seq_put_right:Nn \g_@@_affiliation_seq {#1}
-}
-
-\NewDocumentCommand{\email}{m}{
-  \seq_put_right:Nn \g_@@_email_seq {#1}
-}
-
-\NewDocumentCommand{\orcid}{m}{
-  \seq_put_right:Nn \g_@@_orcid_seq {#1}
-}
-
-\NewDocumentCommand{\homepage}{m}{
-  \seq_put_right:Nn \g_@@_webpage_seq {#1}
-}
-
-\RenewDocumentCommand{\thanks}{m}{
-  \seq_put_right:Nn \g_@@_thanks_seq {#1}
-}
+\int_new:N \g_@@_current_author_int
+\int_zero:N \g_@@_current_author_int
 
 \msg_new:nnn { compositionalityarticle } { no-authors } { You~need~to~define~at~least~one~author,~using~the~\author~macro }
 
 \cs_new:Nn \@@_check_authors_ge_one: {
-  \seq_if_empty:NTF \g_@@_authors_seq { \msg_error:nn { compositionalityarticle } { no-authors } } {  }
+  \int_if_zero:nTF \g_@@_current_author_int { \msg_error:nn { compositionalityarticle } { no-authors } } {  }
 }
+
+\cs_new:Nn \@@_init_new_author: {
+  \int_incr:N \g_@@_current_author_int
+  \seq_gput_right:NV \g_@@_authors_seq \c_empty_tl
+  \seq_gput_right:NV \g_@@_affiliation_seq \c_empty_tl
+  \seq_gput_right:NV \g_@@_email_seq \c_empty_tl
+  \seq_gput_right:NV \g_@@_orcid_seq \c_empty_tl
+  \seq_gput_right:NV \g_@@_webpage_seq \c_empty_tl
+  \seq_gput_right:NV \g_@@_thanks_seq \c_empty_tl
+}
+
+\RenewDocumentCommand{\author}{m}{
+  \@@_init_new_author:
+  \seq_set_item:Nnn \g_@@_authors_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
+\NewDocumentCommand{\affiliation}{m}{
+  \@@_check_authors_ge_one:
+  \seq_set_item:Nnn \g_@@_affiliation_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
+\NewDocumentCommand{\email}{m}{
+  \@@_check_authors_ge_one:
+  \seq_set_item:Nnn \g_@@_email_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
+\NewDocumentCommand{\orcid}{m}{
+  \@@_check_authors_ge_one:
+  \seq_set_item:Nnn \g_@@_orcid_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
+\NewDocumentCommand{\homepage}{m}{
+  \@@_check_authors_ge_one:
+  \seq_set_item:Nnn \g_@@_webpage_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
+\RenewDocumentCommand{\thanks}{m}{
+  \@@_check_authors_ge_one:
+  \seq_set_item:Nnn \g_@@_thanks_seq { \int_use:N \g_@@_current_author_int } { #1 }
+}
+
 
 \cs_new:Nn \@@_print_title_authors: {
   \group_begin:
