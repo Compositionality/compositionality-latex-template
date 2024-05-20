@@ -335,10 +335,14 @@
 \cs_new:Nn \@@_print_title_authors: {
   \group_begin:
   \sffamily\large
+  \int_zero:N \l_tmpa_int
   \int_step_inline:nn { \seq_count:N \g_@@_authors_seq } {
     \seq_item:Nn \g_@@_authors_seq { ##1 }
     \tl_set:Nf \l_tmpa_tl { \seq_item:Nn \g_@@_affiliation_seq { ##1 } }
-    \tl_if_empty:NTF \l_tmpa_tl {  } { \textsuperscript { \int_to_arabic:n { ##1 } } }
+    \tl_if_empty:NTF \l_tmpa_tl {  } { 
+      \int_incr:N \l_tmpa_int
+      \textsuperscript { \int_to_arabic:n { \int_use:N \l_tmpa_int } } 
+    }
     \int_compare:nNnTF { ##1 + 1 } = { \seq_count:N \g_@@_authors_seq } { , ~ and ~ } { }
     \int_compare:nNnTF { ##1 + 1 } < { \seq_count:N \g_@@_authors_seq } { , ~ } { }
   }
@@ -348,10 +352,12 @@
 \cs_new:Nn \@@_print_title_affiliations: {
   \group_begin:
   \sffamily\small\color{gray}
+  \int_zero:N \l_tmpa_int
   \int_step_inline:nn { \seq_count:N \g_@@_authors_seq } {
     \tl_set:Nf \l_tmpa_tl { \seq_item:Nn \g_@@_affiliation_seq { ##1 } }
     \tl_if_empty:NTF \l_tmpa_tl {  } { 
-      \textsuperscript { \int_to_arabic:n { ##1 } }
+      \int_incr:N \l_tmpa_int
+      \textsuperscript { \int_to_arabic:n { \int_use:N \l_tmpa_int } } 
       \tl_use:N \l_tmpa_tl\smallskip\newline 
     }
   }
