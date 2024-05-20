@@ -326,6 +326,12 @@
   \seq_put_right:Nn \g_@@_thanks_seq {#1}
 }
 
+\msg_new:nnn { compositionalityarticle } { no-authors } { You~need~to~define~at~least~one~author,~using~the~\author~macro }
+
+\cs_new:Nn \@@_check_authors_ge_one: {
+  \seq_if_empty:NTF \g_@@_authors_seq { \msg_error:nn { compositionalityarticle } { no-authors } } {  }
+}
+
 \cs_new:Nn \@@_print_title_authors: {
   \group_begin:
   \sffamily\large
