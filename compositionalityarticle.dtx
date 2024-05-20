@@ -94,9 +94,24 @@
 %     \cs{email}\marg{author's email}
 %     \cs{orcid}\marg{author's orcid}
 %     \cs{homepage}\marg{author's personal webpage (if available)}
+%     \cs{thanks}\marg{author's acknowledgements (if needed)}
 %   \end{syntax}
-% So, \cs{author}\texttt{\{Jane Doe, John Doe\}} and \cs{affiliation}\texttt{\{University of Wakanda, Narnia School of Technology\}} is not the correct syntax (although it doesn't raise an error). Instead: \dots
+% So, \cs{author}\texttt{\{Jane Doe, John Doe\}} and \cs{affiliation}\texttt{\{University of Wakanda, Narnia School of Technology\}} is not the correct syntax (although it doesn't raise an error). Instead, use
+% \begin{verbatim}
+%  \author{Peter Freyd}
+%  \affiliation{University of Pennsylvania}
+%  \email{peter.freyd@example.com}
+%  \orcid{0000-0003-2025-7860}
+%  \homepage{https://www.math.upenn.edu/~pjf}
+%  %%%
+%  \author{John von Neumann}
+%  \affiliation{Institute for Advanced Study, Princeton}
+%  \email{john.vonneumann@example.com}
+%  \orcid{0000-0001-5864-1937}
+%  \homepage{https://www.ias.edu/vonneumann}
+% \end{verbatim}
 %
+% The author's \href{https://orcid.org}{orcid} ID should be specified as four four-digits groups like \texttt{0123-0123-0123-0123}.
 % \end{function}
 % \begin{function}
 % {\title}
