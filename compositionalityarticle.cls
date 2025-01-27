@@ -4,7 +4,7 @@
 %% Compositionality - the open journal for the mathematics of composition
 %%
 %% Copyright 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025
-%% https://compositionality-journal.org
+%% https://compositionality.episciences.org
 %%
 %% It is derived from `article.cls' available from
 %% https://www.ctan.org/pkg/article
@@ -21,7 +21,7 @@
 \def\compositionalityarticleversion{3.1}
 \ProvidesClass{compositionalityarticle}
 [2025/01/01 v\compositionalityarticleversion
-class for Compositionality - the open journal for the mathematics of composition (https://compositionality-journal.org)]
+class for Compositionality - the open journal for the mathematics of composition (https://compositionality.episciences.org)]
 \RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
@@ -433,7 +433,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	Compositionality }
 	\\[-2pt]
 	{\scriptsize 
-  \url{http://compositionality-journal.org}}}}\end{minipage}}
+  \url{http://compositionality.episciences.org}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{@volume}{ Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
 	}{} (2025)}}
@@ -1068,7 +1068,7 @@ class for Compositionality - the open journal for the mathematics of composition
 				\iftoggle{@xstring}%
 					{\saveexploremode\exploregroups\StrSubstitute{\@titleexpanded}{ }{\%20}[\@titleforurl]\restoreexploremode}%
 					{\gdef\@titleforurl{\@titleexpanded}}%
-				  \href{https://compositionality-journal.org/\@shorttitle/}
+				  \href{https://compositionality.episciences.org/\@shorttitle/}
 				  {%
 				   %March 2023: This is to fix the shortcoming that href in dvips mode 
 				   %cannot break lines:
