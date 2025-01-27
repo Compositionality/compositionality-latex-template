@@ -1068,7 +1068,7 @@ class for Compositionality - the open journal for the mathematics of composition
 				\iftoggle{@xstring}%
 					{\saveexploremode\exploregroups\StrSubstitute{\@titleexpanded}{ }{\%20}[\@titleforurl]\restoreexploremode}%
 					{\gdef\@titleforurl{\@titleexpanded}}%
-				  \href{https://compositionality.episciences.org/\@shorttitle/}
+				  \href{\paperdoi}
 				  {%
 				   %March 2023: This is to fix the shortcoming that href in dvips mode 
 				   %cannot break lines:
