@@ -437,8 +437,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\scriptsize 
   \href{http://compositionality.episciences.org}{\texttt{compositionality.episciences.org}}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
-	\ifcsdef{@volume}{ Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
-	}{} (2025)}}
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2025)}}
 % 	, 1--\pageref{lastpage}
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{paperdoi}{Digital object identifier: \href{\paperdoi}{\paperdoinumber}.}{}
@@ -965,8 +964,7 @@ class for Compositionality - the open journal for the mathematics of composition
 % V3.0 (Spring 2023): new headers and footers:
 	{\fancyfoot[L]{\sffamily\scriptsize 
 	\logo\textcolor{compositionalitypink}{\scriptsize{ {\em Compositionality}, 
-	\ifcsdef{@volume}{Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
-	}{} (2025)%, 1--\pageref{lastpage}.
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2025)%, 1--\pageref{lastpage}.
 % 	\ifcsdef{paperdoi}{\url{\paperdoi}}{}
 	}}}
 	\fancyhead[L]{\textcolor{compositionalitypink}{\sffamily 
