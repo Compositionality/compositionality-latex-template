@@ -441,7 +441,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	{\ifcsdef{receiveddate}{Received \receiveddate;}{} 
 % 	\ifcsdef{reviseddate}{revised \reviseddate;}{}
-	accepted \ifcsdef{@accepteddate}{\@accepteddate;}{}
+	accepted \ifcsdef{accepteddate}{\accepteddate;}{}
 % 	\ifcsdef{publisheddate}{published \publisheddate.}{}  \hfill \\[-2pt]
 	\ifcsdef{paperdoi}{available from \url{\paperdoi}}{}}
 }}
@@ -1337,7 +1337,7 @@ class for Compositionality - the open journal for the mathematics of composition
 			  \newcommand {\biglogo} 
 			  {\raisebox{-0.3cm}[0.1cm]{\includegraphics[width=0.065\textwidth, height=0.065\textwidth]{logo.eps}}}
 			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
-			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{@accepteddate}{\@accepteddate}{}.  Click on the title to verify.}}}}
+			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{accepteddate}{\accepteddate}{}.  Click on the title to verify.}}}}
 
 
 
