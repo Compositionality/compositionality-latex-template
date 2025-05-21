@@ -192,6 +192,7 @@ class for Compositionality - the open journal for the mathematics of composition
 
 \newtoggle{@accepted}
 \togglefalse{@accepted}
+\def\@accepteddate{\accepteddate}
 \DeclareOptionX{accepted}[]{\ifstrempty{#1}{}{\def\@accepteddate{#1}}\toggletrue{@accepted}\togglefalse{@unpublished}}
 
 \newtoggle{@revtexcompatibility}
@@ -974,33 +975,33 @@ class for Compositionality - the open journal for the mathematics of composition
 % end-of-V3.0 adjustments
 
 % validate the date format to be YYYY-MM-DD
-\AtBeginDocument{
-	\ifcsdef{@accepteddate}
-	{%
-		\iftoggle{@xstring}
-			{%
-				\RequirePackage{xstring}
-				\def\@dateerror{\ClassError{compositionalityarticle}{The date in the accepted option must be given in the format YYYY-MM-DD}{}}
-				% test that we have two -s
-				\IfSubStr[2]{\@accepteddate}{-}{}{\@dateerror}
-				\IfSubStr[3]{\@accepteddate}{-}{\@dateerror}{}
-				\StrBefore[1]{\@accepteddate}{-}[\@accepteddateyear]
-				\StrBetween[1,2]{\@accepteddate}{-}{-}[\@accepteddatemonth]
-				\StrBehind[2]{\@accepteddate}{-}[\@accepteddateday]
-				\IfDecimal{\@accepteddateyear}{}{\@dateerror}
-				\IfDecimal{\@accepteddatemonth}{}{\@dateerror}
-				\IfDecimal{\@accepteddateday}{}{\@dateerror}
-				\StrLen{\@accepteddateyear}[\@accepteddateyearlength]
-				\StrLen{\@accepteddatemonth}[\@accepteddatemonthlength]
-				\StrLen{\@accepteddateday}[\@accepteddatedaylength]
-				\ifnumcomp{\@accepteddateyearlength}{>}{3}{}{\@dateerror}
-				\ifnumcomp{\@accepteddatemonthlength}{=}{2}{}{\@dateerror}
-				\ifnumcomp{\@accepteddatedaylength}{=}{2}{}{\@dateerror}%
-			}
-			{}
-	}
-	{}
-}
+% \AtBeginDocument{
+% 	\ifcsdef{@accepteddate}
+% 	{%
+% 		\iftoggle{@xstring}
+% 			{%
+% 				\RequirePackage{xstring}
+% 				\def\@dateerror{\ClassError{compositionalityarticle}{The date in the accepted option must be given in the format YYYY-MM-DD}{}}
+% 				% test that we have two -s
+% 				\IfSubStr[2]{\@accepteddate}{-}{}{\@dateerror}
+% 				\IfSubStr[3]{\@accepteddate}{-}{\@dateerror}{}
+% 				\StrBefore[1]{\@accepteddate}{-}[\@accepteddateyear]
+% 				\StrBetween[1,2]{\@accepteddate}{-}{-}[\@accepteddatemonth]
+% 				\StrBehind[2]{\@accepteddate}{-}[\@accepteddateday]
+% 				\IfDecimal{\@accepteddateyear}{}{\@dateerror}
+% 				\IfDecimal{\@accepteddatemonth}{}{\@dateerror}
+% 				\IfDecimal{\@accepteddateday}{}{\@dateerror}
+% 				\StrLen{\@accepteddateyear}[\@accepteddateyearlength]
+% 				\StrLen{\@accepteddatemonth}[\@accepteddatemonthlength]
+% 				\StrLen{\@accepteddateday}[\@accepteddatedaylength]
+% 				\ifnumcomp{\@accepteddateyearlength}{>}{3}{}{\@dateerror}
+% 				\ifnumcomp{\@accepteddatemonthlength}{=}{2}{}{\@dateerror}
+% 				\ifnumcomp{\@accepteddatedaylength}{=}{2}{}{\@dateerror}%
+% 			}
+% 			{}
+% 	}
+% 	{}
+% }
 
 %MODIFIED 29.11
 
@@ -1327,16 +1328,16 @@ class for Compositionality - the open journal for the mathematics of composition
 	\iftoggle{@xstring}
 		{\RequirePackage{xstring}}
 		{}
+		
+    \newcommand{\biglogo}{\raisebox{-0.3cm}[0.1cm]{\includegraphics[width=0.065\textwidth, height=0.065\textwidth]{logo.eps}}}
+	\newcommand{\logo}{\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}		
 
 	\iftoggle{@accepted}
 		{%
 			\newsavebox\@compositionalityacceptedbox
 
 
-			  % V3.0: for the new first-page header:
-			  \newcommand {\biglogo} 
-			  {\raisebox{-0.3cm}[0.1cm]{\includegraphics[width=0.065\textwidth, height=0.065\textwidth]{logo.eps}}}
-			  \newcommand {\logo} {\raisebox{-0.15cm}[0.1cm]{\includegraphics[width=0.035\textwidth, height=0.035\textwidth]{logo.eps}}}
+			% V3.0: for the new first-page header:
 			\savebox\@compositionalityacceptedbox{{\sffamily\scriptsize \logo\textcolor{compositionalitypink}{Accepted in Compositionality on \ifcsdef{accepteddate}{\accepteddate}{}.  Click on the title to verify.}}}}
 
 
