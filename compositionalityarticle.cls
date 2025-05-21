@@ -441,11 +441,10 @@ class for Compositionality - the open journal for the mathematics of composition
 	}{} (2025)}}
 % 	, 1--\pageref{lastpage}
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
-	{\ifcsdef{receiveddate}{Received \receiveddate;}{} 
-% 	\ifcsdef{reviseddate}{revised \reviseddate;}{}
-	accepted \ifcsdef{accepteddate}{\accepteddate;}{}
-% 	\ifcsdef{publisheddate}{published \publisheddate.}{}  \hfill \\[-2pt]
-	\ifcsdef{paperdoi}{available from \url{\paperdoi}}{}}
+	\ifcsdef{paperdoi}{Digital object identifier: \href{\paperdoi}{\paperdoinumber}.}{}
+	{\ifcsdef{receiveddate}{Received: \receiveddate.}{} 
+	Accepted: \ifcsdef{accepteddate}{\accepteddate.}{}
+	}
 }}
 }
 % End-of-v3.0-adjustment
