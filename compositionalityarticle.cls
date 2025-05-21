@@ -192,8 +192,9 @@ class for Compositionality - the open journal for the mathematics of composition
 
 \newtoggle{@accepted}
 \togglefalse{@accepted}
-\def\@accepteddate{\accepteddate}
-\DeclareOptionX{accepted}[]{\ifstrempty{#1}{}{\def\@accepteddate{#1}}\toggletrue{@accepted}\togglefalse{@unpublished}}
+\def\@accepteddate{\accepteddate} 
+\DeclareOptionX{accepted}[]{\ifstrempty{#1}{}{\def\@accepteddate{#1}}\toggletrue{@accepted}\togglefalse{@unpublished}} 
+\toggletrue{@accepted}
 
 \newtoggle{@revtexcompatibility}
 \togglefalse{@revtexcompatibility}
