@@ -433,7 +433,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	Compositionality }
 	\\[-2pt]
 	{\scriptsize 
-  \url{http://compositionality.episciences.org}}}}\end{minipage}}
+  \url{https://compositionality.episciences.org}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{@volume}{ Volume \@volume }{}, \ifcsdef{@issue}{Issue \@issue 
 	}{} (2025)}}
