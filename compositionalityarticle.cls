@@ -435,7 +435,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	Compositionality }
 	\\[-2pt]
 	{\scriptsize 
-  \href{http://compositionality.episciences.org}{\texttt{compositionality.episciences.org}}}}}\end{minipage}}
+  \href{https://compositionality.episciences.org}{\texttt{compositionality.episciences.org}}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2025)}}
 % 	, 1--\pageref{lastpage}
