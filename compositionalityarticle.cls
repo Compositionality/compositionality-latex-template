@@ -18,7 +18,7 @@
 %% version 2005/12/01 or later.
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\def\compositionalityarticleversion{3.2}
+\def\compositionalityarticleversion{3.3}
 \ProvidesClass{compositionalityarticle}
 [2026/01/01 v\compositionalityarticleversion
 class for Compositionality - the open journal for the mathematics of composition (https://compositionality.episciences.org)]
@@ -437,7 +437,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\scriptsize 
   \href{https://compositionality.episciences.org}{\texttt{compositionality.episciences.org}}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
-	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2026)}}
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (\the\year)}}
 % 	, 1--\pageref{lastpage}
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{paperdoi}{Digital object identifier: \href{\paperdoi}{\paperdoinumber}.}{}
@@ -964,7 +964,7 @@ class for Compositionality - the open journal for the mathematics of composition
 % V3.0 (Spring 2023): new headers and footers:
 	{\fancyfoot[L]{\sffamily\scriptsize 
 	\logo\textcolor{compositionalitypink}{\scriptsize{ {\em Compositionality}, 
-	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2026)%, 1--\pageref{lastpage}.
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (\the\year)%, 1--\pageref{lastpage}.
 % 	\ifcsdef{paperdoi}{\url{\paperdoi}}{}
 	}}}
 	\fancyhead[L]{\textcolor{compositionalitypink}{\sffamily 
