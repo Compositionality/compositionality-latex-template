@@ -3,7 +3,7 @@
 %% it provides the compositionalityarticle class for typesetting articles in
 %% Compositionality - the open journal for the mathematics of composition
 %%
-%% Copyright 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025
+%% Copyright 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026
 %% https://compositionality.episciences.org
 %%
 %% It is derived from `article.cls' available from
@@ -18,9 +18,9 @@
 %% version 2005/12/01 or later.
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\def\compositionalityarticleversion{3.1}
+\def\compositionalityarticleversion{3.2}
 \ProvidesClass{compositionalityarticle}
-[2025/01/01 v\compositionalityarticleversion
+[2026/01/01 v\compositionalityarticleversion
 class for Compositionality - the open journal for the mathematics of composition (https://compositionality.episciences.org)]
 \RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
@@ -437,7 +437,7 @@ class for Compositionality - the open journal for the mathematics of composition
 	{\scriptsize 
   \href{https://compositionality.episciences.org}{\texttt{compositionality.episciences.org}}}}}\end{minipage}}
     \rhead{\textcolor{compositionalitypink}{\sffamily \scriptsize 
-	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2025)}}
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2026)}}
 % 	, 1--\pageref{lastpage}
 	\lfoot{\textcolor{compositionalitypink}{\sffamily \scriptsize 
 	\ifcsdef{paperdoi}{Digital object identifier: \href{\paperdoi}{\paperdoinumber}.}{}
@@ -964,7 +964,7 @@ class for Compositionality - the open journal for the mathematics of composition
 % V3.0 (Spring 2023): new headers and footers:
 	{\fancyfoot[L]{\sffamily\scriptsize 
 	\logo\textcolor{compositionalitypink}{\scriptsize{ {\em Compositionality}, 
-	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2025)%, 1--\pageref{lastpage}.
+	Volume \compositionalityVolume{}, Issue \compositionalityIssue{} (2026)%, 1--\pageref{lastpage}.
 % 	\ifcsdef{paperdoi}{\url{\paperdoi}}{}
 	}}}
 	\fancyhead[L]{\textcolor{compositionalitypink}{\sffamily 
